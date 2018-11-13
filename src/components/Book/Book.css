@@ -1,4 +1,4 @@
-.Post {
+.Book {
     width: 100px;
     padding: 16px;
     text-align: center;
@@ -9,8 +9,8 @@
     cursor: pointer;
 }
 
-.Post:hover,
-.Post:active {
+.Book:hover,
+.Book:active {
     background-color: #C0DDF5;
 }
 
