@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './Challenge.css';
 import Books from './Books/Books';
 import FullBook from './FullBook/FullBook';
 //import NewBook from './NewBook/NewBook';
 import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker'
 import { Route, NavLink, Switch } from 'react-router-dom';
-import asynchComponent from '../../hoc/asynchComponent';
 
 
-const AsynchNewBook = asynchComponent(() => {
-    return import('./NewBook/NewBook');
-})
+
+const NewBook = React.lazy(() => import('./NewBook/NewBook'))
+
 
 
 
@@ -34,7 +33,12 @@ class Challenge extends Component {
                 </header>
                 <Switch>
                     <Route path="/books" component={Books} />
-                    <Route path="/new-book" component={AsynchNewBook} />
+                    <Route path="/new-book" render={() => (
+                        <Suspense fallback={<div>Loading...</div>} >
+                            <NewBook/>
+                        </Suspense>
+                        )}
+                    />
                     <Route path="/" component={ChallengeTracker} />
                     {/* <Route render={() => <h1>Not found</h1>} /> */}
                 </Switch>
