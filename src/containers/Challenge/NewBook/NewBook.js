@@ -16,6 +16,9 @@ class NewBook extends Component {
         }) 
         console.log(this.state)
     }
+    componentDidMount(){
+        console.log(this.props)
+    }
     render() {
         return(
             <div className="NewBook">

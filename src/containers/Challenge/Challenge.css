@@ -24,6 +24,7 @@
 }
 
 .Challenge a:hover,
+.Challenge a:active,
 .Challenge a:active {
     color:orange
 }

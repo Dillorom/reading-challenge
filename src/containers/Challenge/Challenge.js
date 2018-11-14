@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import Books from './Books/Books';
-// import FullBook from '../../components/FullBook/FullBook';
+import FullBook from './FullBook/FullBook';
 import NewBook from './NewBook/NewBook';
 import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker'
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Challenge.css';
 
@@ -16,19 +16,21 @@ class Challenge extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>New Book</Link></li>
-                            <li><Link to="/books">My Books</Link></li>
+                            }}>New Book</NavLink></li>
+                            <li><NavLink to="/books/">My Books</NavLink></li>
                         </ul>
                     </nav>
                 </header>
-                <Route path="/" exact component={ChallengeTracker} />
-                <Route path="/new-book" component={NewBook} />
-                <Route path="/books" component={Books} />
+                <Switch>
+                    <Route path="/books" component={Books} />
+                    <Route path="/new-book" component={NewBook} />
+                    <Route path="/" component={ChallengeTracker} />
+                </Switch>
             </div>
         );
     }

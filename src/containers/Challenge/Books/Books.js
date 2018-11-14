@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Books.css';
 import Book from '../../../components/Book/Book';
 //import {PropTypes} from 'react';
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import FullBook from '../FullBook/FullBook';
 
 class Books extends Component {
 	state = {
@@ -20,24 +23,37 @@ class Books extends Component {
             }
         ]
 	}
+	
+	bookSelectedHandler = (id) => {
+		console.log(this.props)
+		this.props.history.push({pathname:'/books/' + id});
+		//this.props.history.push('/' + id);
+	}
 
 	render(){
 	
 		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 		if (!this.state.error) {
 			allBooks = this.state.allBooks.map(book => {
-				return <Book 
-					key={book.id} 
-					title={book.title} 
-					author={book.author}
-					clicked={() => this.postSelectedHandler(book.id)} />;
+				return(
+				<Link to={"/books/" + book.id} key={book.id} >
+					 <Book
+					 	//key={book.id} 
+						title={book.title} 
+						author={book.author}
+					clicked={() => this.bookSelectedHandler(book.id)} />
+				</Link>
+				);
 			});
 		}
 
 		return (
-			<section className="Books">
-				{allBooks}
-			</section>
+			<div>
+				<section className="Books">
+					{allBooks}
+				</section>
+				<Route path={this.props.match.url + '/:id'} exact component={FullBook} />
+			</div>
 		);
 	}
 };
