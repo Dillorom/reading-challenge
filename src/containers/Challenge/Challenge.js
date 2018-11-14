@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-
+import './Challenge.css';
 import Books from './Books/Books';
 import FullBook from './FullBook/FullBook';
-import NewBook from './NewBook/NewBook';
+//import NewBook from './NewBook/NewBook';
 import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker'
 import { Route, NavLink, Switch } from 'react-router-dom';
+import asynchComponent from '../../hoc/asynchComponent';
 
-import './Challenge.css';
+
+const AsynchNewBook = asynchComponent(() => {
+    return import('./NewBook/NewBook');
+})
+
+
 
 class Challenge extends Component {
   
@@ -28,7 +34,7 @@ class Challenge extends Component {
                 </header>
                 <Switch>
                     <Route path="/books" component={Books} />
-                    <Route path="/new-book" component={NewBook} />
+                    <Route path="/new-book" component={AsynchNewBook} />
                     <Route path="/" component={ChallengeTracker} />
                     {/* <Route render={() => <h1>Not found</h1>} /> */}
                 </Switch>
