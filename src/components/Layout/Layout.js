@@ -8,8 +8,8 @@ class Layout extends Component {
     render(){
         return(
             <Aux>
-                <Account />
-                <Toolbar />
+                {/* <Account />
+                <Toolbar /> */}
                 <main>
                     {this.props.children}
                 </main>

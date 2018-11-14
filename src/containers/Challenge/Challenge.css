@@ -5,3 +5,25 @@
     width: 80%;
     margin: auto;
 }
+.Challenge ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center
+}
+.Challenge li {
+    display: inline-block;
+    margin: 20px;
+
+}
+
+.Challenge a {
+    text-decoration: none;
+    color: black;
+}
+
+.Challenge a:hover,
+.Challenge a:active {
+    color:orange
+}
