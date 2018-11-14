@@ -30,6 +30,7 @@ class Challenge extends Component {
                     <Route path="/books" component={Books} />
                     <Route path="/new-book" component={NewBook} />
                     <Route path="/" component={ChallengeTracker} />
+                    {/* <Route render={() => <h1>Not found</h1>} /> */}
                 </Switch>
             </div>
         );

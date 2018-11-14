@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './NewBook.css';
+import { Redirect } from 'react-router-dom';
 
 class NewBook extends Component {
     state = {
         title: '',
         author: '',
+        submitted: false
 
     }
 
@@ -12,7 +14,8 @@ class NewBook extends Component {
         e.preventDefault();
         this.setState({
             title: this.state.title,
-            author: this.state.author
+            author: this.state.author,
+            submitted: true
         }) 
         console.log(this.state)
     }
@@ -20,8 +23,13 @@ class NewBook extends Component {
         console.log(this.props)
     }
     render() {
+        let redirect = null;
+        if (this.state.submitted){
+            redirect = <Redirect to="/books" />
+        }
         return(
             <div className="NewBook">
+                {redirect}
                 <h1>Add a Book</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
