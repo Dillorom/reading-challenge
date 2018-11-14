@@ -7,6 +7,15 @@ class NewBook extends Component {
         author: '',
 
     }
+
+    postDataHandler = (e) => {
+        e.preventDefault();
+        this.setState({
+            title: this.state.title,
+            author: this.state.author
+        }) 
+        console.log(this.state)
+    }
     render() {
         return(
             <div className="NewBook">
@@ -15,7 +24,7 @@ class NewBook extends Component {
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
                 <label>Author</label>
                 <input type="text" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
-                <button>Add Book</button>
+                <button onClick={this.postDataHandler}>Add Book</button>
             </div>
         );
     }
