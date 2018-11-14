@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-import Book from '../../components/Book/Book';
+
+import Books from '../../components/Books/Books';
 import FullBook from '../../components/FullBook/FullBook';
 import NewBook from '../../components/NewBook/NewBook';
-import ChallengeTracker from '../ChallengeTracker/ChallengeTracker'
+import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker'
 
 import './Challenge.css';
 
 class Challenge extends Component {
+    state = {
+        allBooks: [
+            {
+                title: "Design your life",
+                author: "Bill Burnett"
+            },
+            {
+                title: "The last lecture",
+                author: "Randy Pausch"
+            },
+            { 
+                title: "The arabian nights",
+                author: "Unknown"
+            }
+        ]
+    }
     render () {
         return (
             <div>
@@ -17,9 +34,7 @@ class Challenge extends Component {
                     <NewBook />
                 </section>
                 <section className="Books">
-                    <Book />
-                    <Book />
-                    <Book />
+                    <Books allBooks={this.state.allBooks}/>
                 </section>
                 <section>
                     <FullBook />
