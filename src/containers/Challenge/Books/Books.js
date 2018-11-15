@@ -11,15 +11,18 @@ class Books extends Component {
         allBooks: [
             {
                 title: "Design your life",
-                author: "Bill Burnett"
+				author: "Bill Burnett",
+				id: 1
             },
             {
                 title: "The last lecture",
-                author: "Randy Pausch"
+				author: "Randy Pausch",
+				id: 2
             },
             { 
                 title: "The arabian nights",
-                author: "Unknown"
+				author: "Unknown",
+				id: 3
             }
         ]
 	}
