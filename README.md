@@ -1,4 +1,6 @@
-Reading Challenge is an application that lets users create a reading challenge with a goal and keep track of their challenge as they add more books to their bookshelfes. I plan to use Goodreads API to get book titles and author names.
+"This is an application underway!"
+
+Reading Challenge is an application that lets users create a reading challenge with a goal and keep track of their challenge as they add more books to their bookshelves. I plan to use Goodreads API to get book titles and author names.
 
 Reading Challenge is my final project at Flatiron School that I am building with JavaScript, React and Redux in the Front-end and with Ruby in the Back-end. 
 
