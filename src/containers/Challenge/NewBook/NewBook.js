@@ -31,11 +31,13 @@ class NewBook extends Component {
             <div className="NewBook">
                 {redirect}
                 <h1>Add a Book</h1>
-                <label>Title</label>
-                <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
-                <label>Author</label>
-                <input type="text" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
-                <button onClick={this.postDataHandler}>Add Book</button>
+                <form onSubmit={this.postDataHandler}>
+                    <label>Title</label>
+                    <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
+                    <label>Author</label>
+                    <input type="text" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
+                    <button type="submit">Add Book</button>
+                </form>
             </div>
         );
     }
