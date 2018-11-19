@@ -12,17 +12,20 @@ class Books extends Component {
             {
                 title: "Design your life",
 				author: "Bill Burnett",
-				id: 1
-            },
+				img_url: "https://images.gr-assets.com/books/1476133952l/26046333.jpg",
+				description: "Build a Life that Works for You"
+			},
             {
                 title: "The last lecture",
 				author: "Randy Pausch",
-				id: 2
+				img_url: "https://images.gr-assets.com/books/1529682044l/40611510.jpg",
+				descriont: "Based on the extraordinary final lecture by Carnegie Mellon University professor Randy Pausch, given after he discovered he had pancreatic cancer, this moving book goes beyond the now-famous lecture to inspire readers to live each day with purpose and joy."
             },
             { 
                 title: "The arabian nights",
-				author: "Unknown",
-				id: 3
+				author: "Wa'fa Tarnovska",
+				img_url: "https://images.gr-assets.com/books/1347497895l/7959757.jpg",
+				description: "Lebanese author Wafa' Tarnowska opens a window onto the Arab world with her magnificent new translation of eight stories from A Thousand and One Nights."
             }
         ]
 	}
@@ -44,6 +47,8 @@ class Books extends Component {
 					 	//key={book.id} 
 						title={book.title} 
 						author={book.author}
+						img_url={book.img_url}
+						description={book.description}
 					clicked={() => this.bookSelectedHandler(book.id)} />
 				</Link>
 				);

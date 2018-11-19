@@ -1,5 +1,5 @@
 .Book {
-    width: 100px;
+    width: 100%;
     padding: 16px;
     text-align: center;
     border: 1px solid #eee;
@@ -17,4 +17,8 @@
 .Author {
     margin: 16px 0;
     color: #ccc;
+}
+.bookImage {
+    width: 70%,
+
 }
