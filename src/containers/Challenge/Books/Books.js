@@ -55,14 +55,33 @@ class Books extends Component {
 			});
 		}
 
+		// let fullBooks;
+		// if (this.bookSelectHandler) {
+		// 	fullBooks = this.state.allBooks.map(book => {
+		// 		return(
+		// 			<FullBook 
+		// 			title={book.title} 
+		// 			author={book.author}
+		// 			img_url={book.img_url}
+		// 			description={book.description}
+		// 			/>
+		// 	);
+		// 	});
+		// }
+
 		return (
 			<div>
 				<section className="Books">
 					{allBooks}				
 				</section>
-				<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} />} />
+				<section className="FullBooks">
+				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
+					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} />} /> 
+				</section>
 			</div>
 		);
+		// how do I get to the exact route, so that full page does not show up in books page, until I click on a book -- 
+		//exact component={FullBook}
 	}
 };
 

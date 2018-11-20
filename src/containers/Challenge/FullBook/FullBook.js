@@ -4,7 +4,7 @@ import './FullBook.css';
 
 const FullBook = (props) => (
                 <div className="FullBook">
-                    {props.books.map(book => {
+               {props.books.map(book => {
                         return(
                         <div>   
                             <h1>{book.title}</h1>
