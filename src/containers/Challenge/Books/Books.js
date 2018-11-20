@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
 
+const API_URL = process.env.REACT_APP_API_URL
+
 class Books extends Component {
 	state = {
 		allBooks: []
 	}
 
 	componentDidMount() {
-		fetch('https://localhost:3000/api/books')
+		fetch(`${API_URL}/books`)
 			.then(response => response.json())
 				.then(allBooks => this.setState({allBooks}))
 	}
