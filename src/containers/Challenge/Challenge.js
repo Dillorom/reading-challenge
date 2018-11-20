@@ -14,7 +14,7 @@ const NewBook = React.lazy(() => import('./NewBook/NewBook'))
 
 
 class Challenge extends Component {
-  
+   
     render () {
         return (
             <div className="Challenge">

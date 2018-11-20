@@ -31,7 +31,6 @@ class Books extends Component {
 	}
 	
 	bookSelectedHandler = (id) => {
-		console.log(this.props)
 		this.props.history.push({pathname:'/books/' + id});
 		//this.props.history.push('/' + id);
 	}
@@ -51,6 +50,7 @@ class Books extends Component {
 						description={book.description}
 					clicked={() => this.bookSelectedHandler(book.id)} />
 				</Link>
+
 				);
 			});
 		}
@@ -58,9 +58,9 @@ class Books extends Component {
 		return (
 			<div>
 				<section className="Books">
-					{allBooks}
+					{allBooks}				
 				</section>
-				<Route path={this.props.match.url + '/:id'} exact component={FullBook} />
+				<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} />} />
 			</div>
 		);
 	}

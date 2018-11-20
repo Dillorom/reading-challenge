@@ -2,24 +2,18 @@ import React, { Component } from 'react';
 
 import './FullBook.css';
 
-class FullBook extends Component {
-    componentDidMount(){
-        console.log(this.props)
-    }
-    render(){
-        let book = <p>Please, add a book!</p>
-        book = (
-        <div className="FullBook">
-        <p>FullBook page</p>
-            <h1>props.title</h1>
-            <h2>props.author</h2>
-            <div className="Edit">
-                <button className="Delete">Delete</button>
-            </div>
-        </div>
-    );
-        return book;
-   }
-};
+const FullBook = (props) => (
+            {props.allBooks.map(book => 
+                <div className="FullBook">
+                    <h1>{book.title}</h1>
+                    <h2>{book.author}</h2>
+                    <img src={book.img_url} alt={book.title}/>
+                    <p>{book.description}</p>
+                    <div className="Edit">
+                        <button className="Delete">Delete</button>
+                    </div>
+                </div>
+    )}
+)
 
 export default FullBook;
