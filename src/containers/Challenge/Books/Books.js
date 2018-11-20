@@ -7,37 +7,37 @@ import { Route } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
 
 class Books extends Component {
-	// state = {
-	// 	allBooks: []
-	// }
-
-	// componentDidMount() {
-	// 	fetch('https://localhost:3000/api/books')
-	// 		.then(response => response.json())
-	// 			.then(allBooks => this.setState({allBooks}))
-	// }
 	state = {
-        allBooks: [
-            {
-                title: "Design your life",
-				author: "Bill Burnett",
-				img_url: "https://images.gr-assets.com/books/1476133952l/26046333.jpg",
-				description: "Build a Life that Works for You"
-			},
-            {
-                title: "The last lecture",
-				author: "Randy Pausch",
-				img_url: "https://images.gr-assets.com/books/1529682044l/40611510.jpg",
-				description: "Based on the extraordinary final lecture by Carnegie Mellon University professor Randy Pausch, given after he discovered he had pancreatic cancer, this moving book goes beyond the now-famous lecture to inspire readers to live each day with purpose and joy."
-            },
-            { 
-                title: "The arabian nights",
-				author: "Wa'fa Tarnovska",
-				img_url: "https://images.gr-assets.com/books/1347497895l/7959757.jpg",
-				description: "Lebanese author Wafa' Tarnowska opens a window onto the Arab world with her magnificent new translation of eight stories from A Thousand and One Nights."
-            }
-        ]
+		allBooks: []
 	}
+
+	componentDidMount() {
+		fetch('https://localhost:3000/api/books')
+			.then(response => response.json())
+				.then(allBooks => this.setState({allBooks}))
+	}
+	// state = {
+    //     allBooks: [
+    //         {
+    //             title: "Design your life",
+	// 			author: "Bill Burnett",
+	// 			img_url: "https://images.gr-assets.com/books/1476133952l/26046333.jpg",
+	// 			description: "Build a Life that Works for You"
+	// 		},
+    //         {
+    //             title: "The last lecture",
+	// 			author: "Randy Pausch",
+	// 			img_url: "https://images.gr-assets.com/books/1529682044l/40611510.jpg",
+	// 			description: "Based on the extraordinary final lecture by Carnegie Mellon University professor Randy Pausch, given after he discovered he had pancreatic cancer, this moving book goes beyond the now-famous lecture to inspire readers to live each day with purpose and joy."
+    //         },
+    //         { 
+    //             title: "The arabian nights",
+	// 			author: "Wa'fa Tarnovska",
+	// 			img_url: "https://images.gr-assets.com/books/1347497895l/7959757.jpg",
+	// 			description: "Lebanese author Wafa' Tarnowska opens a window onto the Arab world with her magnificent new translation of eight stories from A Thousand and One Nights."
+    //         }
+    //     ]
+	// }
 	
 	bookSelectedHandler = (id) => {
 		this.props.history.push({pathname:'/books/' + id});
