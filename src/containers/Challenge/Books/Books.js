@@ -7,6 +7,15 @@ import { Route } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
 
 class Books extends Component {
+	// state = {
+	// 	allBooks: []
+	// }
+
+	// componentDidMount() {
+	// 	fetch('https://localhost:3000/api/books')
+	// 		.then(response => response.json())
+	// 			.then(allBooks => this.setState({allBooks}))
+	// }
 	state = {
         allBooks: [
             {
@@ -19,7 +28,7 @@ class Books extends Component {
                 title: "The last lecture",
 				author: "Randy Pausch",
 				img_url: "https://images.gr-assets.com/books/1529682044l/40611510.jpg",
-				descriont: "Based on the extraordinary final lecture by Carnegie Mellon University professor Randy Pausch, given after he discovered he had pancreatic cancer, this moving book goes beyond the now-famous lecture to inspire readers to live each day with purpose and joy."
+				description: "Based on the extraordinary final lecture by Carnegie Mellon University professor Randy Pausch, given after he discovered he had pancreatic cancer, this moving book goes beyond the now-famous lecture to inspire readers to live each day with purpose and joy."
             },
             { 
                 title: "The arabian nights",
@@ -36,6 +45,7 @@ class Books extends Component {
 	}
 
 	render(){
+		console.log(this.state)
 	
 		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 		if (!this.state.error) {
