@@ -60,7 +60,7 @@ class Books extends Component {
 				<section className="Books">
 					{allBooks}				
 				</section>
-				<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} />} />
+				<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} />} />
 			</div>
 		);
 	}
