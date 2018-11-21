@@ -5,8 +5,9 @@ import Book from '../../../components/Book/Book';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
+import BookService from '../../../services/BookService';
 
-const API_URL = process.env.REACT_APP_API_URL
+//const API_URL = process.env.REACT_APP_API_URL
 
 class Books extends Component {
 	state = {
@@ -14,9 +15,10 @@ class Books extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`${API_URL}/books`)
-			.then(response => response.json())
-				.then(allBooks => this.setState({allBooks}))
+		BookService.fetchBooks().then(allBooks => this.setState({allBooks}))
+		// fetch(`${API_URL}/books`)
+		// 	.then(response => response.json())
+		// 		.then(allBooks => this.setState({allBooks}))
 	}
 	// state = {
     //     allBooks: [
@@ -48,7 +50,7 @@ class Books extends Component {
 
 	render(){
 		console.log(this.state)
-	
+			
 		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 		if (!this.state.error) {
 			allBooks = this.state.allBooks.map(book => {
@@ -97,21 +99,21 @@ class Books extends Component {
 	}
 };
 
-Books.propTypes = {
-	allBooks: function(props) {
-		if(!Array.isArray(props.allBooks)) {
-			return new Error(
-				"Books should be an array"	
-				)
-		} else if(!props.allBooks.length) {
-			return new Error(
-				"Books must have at least one record"
-				)
-		} else {
-			return null
-		}
-	}
-}
+// Books.propTypes = {
+// 	allBooks: function(props) {
+// 		if(!Array.isArray(props.allBooks)) {
+// 			return new Error(
+// 				"Books should be an array"	
+// 				)
+// 		} else if(!props.allBooks.length) {
+// 			return new Error(
+// 				"Books must have at least one record"
+// 				)
+// 		} else {
+// 			return null
+// 		}
+// 	}
+// }
 
 
 
