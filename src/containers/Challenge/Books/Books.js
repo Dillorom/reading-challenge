@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
 import BookService from '../../../services/BookService';
+import NewBook from '../NewBook/NewBook';
 
 //const API_URL = process.env.REACT_APP_API_URL
 
@@ -48,6 +49,11 @@ class Books extends Component {
 		//this.props.history.push('/' + id);
 	}
 
+	addBook = book => {
+		BookService.createBook(book).then(book => this.setState({
+			allBooks: this.state.allBooks.concat(book)
+		}))
+	}
 	render(){
 		console.log(this.state)
 			
@@ -92,6 +98,7 @@ class Books extends Component {
 				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
 					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} />} /> 
 				</section>
+				<NewBook addBook={this.addBook} />
 			</div>
 		);
 		// how do I get to the exact route, so that full page does not show up in books page, until I click on a book -- 
