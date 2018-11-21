@@ -6,9 +6,9 @@ class NewBook extends Component {
     state = {
         title: '',
         author: '',
-        url_img: '',
-        description: ''
-        //submitted: false
+        img_url: '',
+        description: '',
+        submitted: false
 
     }
 
@@ -19,8 +19,9 @@ class NewBook extends Component {
         this.setState({
             title: '',
             author: '',
-            url_img: '',
-            description: ''
+            img_url: '',
+            description: '',
+            submitted: true
         }) 
         console.log(this.state)
     }
@@ -28,22 +29,22 @@ class NewBook extends Component {
         console.log(this.props)
     }
     render() {
-        // let redirect = null;
-        // if (this.state.submitted){
-        //     redirect = <Redirect to="/books" />
-        // }
+        let redirect = null;
+        if (this.state.submitted){
+            redirect = <Redirect to="/books" />
+        }
         return(
             <div className="NewBook">
-                {/* {redirect} */}
+                {redirect}
                 <h1>Add a Book</h1>
                 <form onSubmit={this.postDataHandler}>
                     <label>Title</label>
                     <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
                     <label>Author</label>
                     <input type="text" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
-                    <label>URL Image</label>
-                    <input type="text" value={this.state.url_img} onChange={(event) => this.setState({url_img: event.target.value})}/>
-                    <label>Description</label>
+                    <label>Image URL</label>
+                    <input type="text" value={this.state.img_url} onChange={(event) => this.setState({img_url: event.target.value})}/>
+                    <label>Description</label> 
                     <input type="text" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})}/>
                     <button type="submit">Add Book</button>
                 </form>

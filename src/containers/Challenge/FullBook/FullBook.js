@@ -6,7 +6,7 @@ const FullBook = (props) => (
                 <div className="FullBook">
                {props.books.map(book => {
                         return(
-                        <div>   
+                        <div key={book.id}>   
                             <h1>{book.title}</h1>
                             <h2>{book.author}</h2>
                             <img src={book.img_url} alt={book.title}/>
