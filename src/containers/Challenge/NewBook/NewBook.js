@@ -25,9 +25,7 @@ class NewBook extends Component {
         }) 
         console.log(this.state)
     }
-    componentDidMount(){
-        console.log(this.props)
-    }
+   
     render() {
         let redirect = null;
         if (this.state.submitted){
