@@ -11,16 +11,20 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 class Books extends Component {
 	state = {
-		allBooks: []
+		allBooks: [],
+		selectedBookId: null
 	}
 
 	componentDidMount() {
-		BookService.fetchBooks().then(allBooks => this.setState({allBooks})
+		BookService.fetchBooks().then(allBooks => this.setState({allBooks: allBooks})
 	)}
 	
 	
 	bookSelectedHandler = (id) => {
 		this.props.history.push({pathname:'/books/' + id});
+		this.setState({
+			selectedBookId: id
+		})
 		//this.props.history.push('/' + id);
 	}
 
@@ -92,7 +96,7 @@ class Books extends Component {
 				</section>
 				<section className="FullBooks">
 				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
-					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
+					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
 				</section>
 				<NewBook addBook={this.addBook} />
 			</div>
