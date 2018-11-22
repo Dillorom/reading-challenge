@@ -12,7 +12,7 @@ const FullBook = (props) => (
                             <img src={book.img_url} alt={book.title}/>
                             <p>{book.description}</p>
                             <div className="Edit">
-                                <button className="Delete">Delete</button>
+                                <button onClick={() => props.deleteBook(book.id)} className="Delete">Delete</button>
                             </div>
                         </div>
                         )

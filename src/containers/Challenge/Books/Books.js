@@ -7,6 +7,7 @@ import FullBook from '../FullBook/FullBook';
 import BookService from '../../../services/BookService';
 import NewBook from '../NewBook/NewBook';
 
+const API_URL = process.env.REACT_APP_API_URL;
 
 class Books extends Component {
 	state = {
@@ -28,6 +29,28 @@ class Books extends Component {
 			allBooks: this.state.allBooks.concat(book)
 		}))
 	}
+
+	deleteBook = bookId => {
+		const request = {
+		method: 'DELETE'
+		}
+		return fetch(`${API_URL}/books/${bookId}`, request)
+			.then(response => {
+				if (response.ok){
+					const index = this.state.allBooks.findIndex(book => book.id === bookId)  
+					this.setState({
+						allBooks: [
+							...this.state.allBooks.slice(0, index),
+							...this.state.allBooks.slice(index + 1)
+						]
+					})
+				} else {
+					window.alert("Unable to delete the book.")
+				}
+			})
+			.catch(err => console.log("Received this error while trying to delete a book:", err))
+	}
+
 	render(){
 		console.log(this.state)
 			
@@ -69,7 +92,7 @@ class Books extends Component {
 				</section>
 				<section className="FullBooks">
 				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
-					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} />} /> 
+					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
 				</section>
 				<NewBook addBook={this.addBook} />
 			</div>
