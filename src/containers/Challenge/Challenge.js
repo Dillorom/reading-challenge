@@ -42,7 +42,6 @@ class Challenge extends Component {
                     <nav>
                         <ul>
                             <li><NavLink to="/" exact>Home</NavLink></li>
-                            <li><NavLink to="/search" exact>Search</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
@@ -54,8 +53,7 @@ class Challenge extends Component {
                 </header>
                 <Switch>
                     <Route path="/books" component={Books} />
-                    <Route path="/search" component={Search} />
-                    <Route path="/new-book" render={() => (
+                       <Route path="/new-book" render={() => (
                         <Suspense fallback={<div>Loading...</div>} >
                             <NewBook/>
                         </Suspense>

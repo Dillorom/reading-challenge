@@ -76,6 +76,8 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state)
+    console.log(this.props.results)
     return (
       <div>
         <div className="form-group row">
