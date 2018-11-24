@@ -44,6 +44,7 @@ const SearchResult = ({ bookData, expandBook }) => {
           >
             More Info
           </button>
+          <button>Add Book</button>
         </div>
       </div>
     </div>

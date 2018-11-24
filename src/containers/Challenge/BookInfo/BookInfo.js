@@ -98,6 +98,7 @@ class BookInfo extends Component {
               Learn More
             </a>
           </p>
+          <button>Add Book</button>
         </div>
       </div>
     );
