@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import user from '../reducers/user';
 // const initialState = {
 // //need to set initial state
 // }
@@ -8,5 +9,5 @@ import { combineReducers } from 'redux';
 // }
 
 export default combineReducers({
-    user: () => ({})
+    user
 });
