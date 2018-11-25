@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 
-const Login = () => ( 
-    <div>
-        <LoginForm />
-    </div>
-)
+class Login extends Component {
+
+    submit = data => {
+        console.log(data);
+    }
+    render() {
+        return(
+            <div>
+                <LoginForm submit={this.submit}/>
+            </div>
+
+        )
+    } 
+};
 
 export default Login;

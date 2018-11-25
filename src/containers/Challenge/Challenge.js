@@ -65,7 +65,6 @@ class Challenge extends Component {
                     <Route path="/" component={ChallengeTracker} />
                     {/* <Route render={() => <h1>Not found</h1>} /> */}
                 </Switch>
-
                     <div className="container">
                     <div className="header clearfix mt-5">
                     <h3 className="text-muted">Goodreads Book Search</h3>
@@ -85,6 +84,7 @@ class Challenge extends Component {
                     )}
                     </div>
                 </div>
+
             </div>
         );
     }
