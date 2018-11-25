@@ -7,6 +7,7 @@ import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker
 import { Route, NavLink, Switch } from 'react-router-dom';
 import Search from './Search/Search';
 import BookInfo from './BookInfo/BookInfo';
+import Login from './Login/Login';
 
 
 
@@ -42,6 +43,7 @@ class Challenge extends Component {
                     <nav>
                         <ul>
                             <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to="/login">Login</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
@@ -53,6 +55,7 @@ class Challenge extends Component {
                 </header>
                 <Switch>
                     <Route path="/books" component={Books} />
+                    <Route path="/login" component={Login} />
                        <Route path="/new-book" render={() => (
                         <Suspense fallback={<div>Loading...</div>} >
                             <NewBook/>
