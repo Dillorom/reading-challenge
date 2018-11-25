@@ -1,9 +1,12 @@
-const initialState = {
-//need to set initial state
-}
+import { combineReducers } from 'redux';
+// const initialState = {
+// //need to set initial state
+// }
 
-const rootReducer = (state = initialState, action) => {
-    return state
-}
+// const rootReducer = (state = initialState, action) => {
+//     return state
+// }
 
-export default rootReducer;
+export default combineReducers({
+    user: () => ({})
+});
