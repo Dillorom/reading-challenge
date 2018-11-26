@@ -87,33 +87,38 @@ class Books extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/" exact>Home</NavLink></li>
-                            <li><NavLink to="/login">Login</NavLink></li>
+                            <li><NavLink to="/" exact>My Books</NavLink></li>
+
                             <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>New Book</NavLink></li>
+                            }}>Add Book</NavLink></li>
+							<li><NavLink to="/goal" exact>My Goal</NavLink></li>
+							<li><NavLink to="/login">Login</NavLink></li>
                         </ul>
                     </nav>
                 </header>
                 <Switch>
                     <Route path="/login" component={Login} />
+					
+					<Route path="/goal" component={ChallengeTracker} />
                        <Route path="/new-book" render={(props) => (
                         <Suspense fallback={<div>Loading...</div>} >
                             <NewBook addBook={this.addBook}/>
                         </Suspense>
                         )}
                     />
-                    <Route path="/" component={ChallengeTracker} />
+                    
+					{this.state.selectedBookId == null ?
+					(<section className="Books">
+						{allBooks}				
+					</section> ) :
+					(<section className="FullBooks">
+						<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
+					</section> )}
                </Switch>
-				{this.state.selectedBookId == null ?
-				(<section className="Books">
-					{allBooks}				
-				</section> ) :
-				(<section className="FullBooks">
-					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
-				</section> )}
+				
             </div>
 		);
 	}
