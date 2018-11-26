@@ -23,13 +23,13 @@ class NewBook extends Component {
             description: '',
             submitted: true
         }) 
-        console.log(this.state)
     }
    
     render() {
         let redirect = null;
         if (this.state.submitted){
-            redirect = <Redirect to="/books" />
+            alert("Your book has been added!")
+            redirect = <Redirect to="/" />
         }
         return(
             <div className="NewBook">

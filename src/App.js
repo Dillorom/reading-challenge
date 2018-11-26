@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Challenge from './containers/Challenge/Challenge';
 import Layout from './components/Layout/Layout';
 import {BrowserRouter as Router } from 'react-router-dom';
+import Books from './containers/Challenge/Books/Books';
 
 
 class App extends Component {
@@ -10,9 +10,7 @@ class App extends Component {
     return (
       <Router basename="/">
         <div className="App">
-         
-            <Challenge />
-          
+          <Books />
         </div>
       </Router>
     );

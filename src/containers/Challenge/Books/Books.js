@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './Books.css';
 import Book from '../../../components/Book/Book';
 import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+
 import FullBook from '../FullBook/FullBook';
 import BookService from '../../../services/BookService';
 import NewBook from '../NewBook/NewBook';
+
+
+import ChallengeTracker from '../../../components/ChallengeTracker/ChallengeTracker'
+import { Route, NavLink, Switch } from 'react-router-dom';
+import Search from '../Search/Search';
+import BookInfo from '../BookInfo/BookInfo';
+import Login from '../Login/Login';
+
+//const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -56,8 +65,6 @@ class Books extends Component {
 	}
 
 	render(){
-		console.log(this.state)
-			
 		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 		if (!this.state.error) {
 			allBooks = this.state.allBooks.map(book => {
@@ -75,35 +82,40 @@ class Books extends Component {
 			});
 		}
 
-		// let fullBooks;
-		// if (this.bookSelectHandler) {
-		// 	fullBooks = this.state.allBooks.map(book => {
-		// 		return(
-		// 			<FullBook 
-		// 			title={book.title} 
-		// 			author={book.author}
-		// 			img_url={book.img_url}
-		// 			description={book.description}
-		// 			/>
-		// 	);
-		// 	});
-		// }
-
 		return (
-			<div>
+			<div className="Challenge">
+                <header>
+                    <nav>
+                        <ul>
+                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to="/login">Login</NavLink></li>
+                            <li><NavLink to={{
+                                pathname: '/new-book',
+                                hash: '#submit',
+                                search: '?quick-submit=true'
+                            }}>New Book</NavLink></li>
+                        </ul>
+                    </nav>
+                </header>
+                <Switch>
+                    <Route path="/login" component={Login} />
+                       <Route path="/new-book" render={(props) => (
+                        <Suspense fallback={<div>Loading...</div>} >
+                            <NewBook addBook={this.addBook}/>
+                        </Suspense>
+                        )}
+                    />
+                    <Route path="/" component={ChallengeTracker} />
+               </Switch>
 				{this.state.selectedBookId == null ?
 				(<section className="Books">
 					{allBooks}				
 				</section> ) :
 				(<section className="FullBooks">
-				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
 					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
 				</section> )}
-				<NewBook addBook={this.addBook} />
-			</div>
+            </div>
 		);
-		// how do I get to the exact route, so that full page does not show up in books page, until I click on a book -- 
-		//exact component={FullBook}
 	}
 };
 
