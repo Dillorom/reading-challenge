@@ -91,13 +91,14 @@ class Books extends Component {
 
 		return (
 			<div>
-				<section className="Books">
+				{this.state.selectedBookId == null ?
+				(<section className="Books">
 					{allBooks}				
-				</section>
-				<section className="FullBooks">
+				</section> ) :
+				(<section className="FullBooks">
 				{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props} books={fullBooks} />} /> */}
 					<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
-				</section>
+				</section> )}
 				<NewBook addBook={this.addBook} />
 			</div>
 		);
