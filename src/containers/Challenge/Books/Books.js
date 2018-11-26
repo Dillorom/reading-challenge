@@ -2,19 +2,16 @@ import React, { Component, Suspense } from 'react';
 import './Books.css';
 import Book from '../../../components/Book/Book';
 import { Link } from 'react-router-dom';
-
 import FullBook from '../FullBook/FullBook';
 import BookService from '../../../services/BookService';
-import NewBook from '../NewBook/NewBook';
-
-
+//import NewBook from '../NewBook/NewBook';
 import ChallengeTracker from '../../../components/ChallengeTracker/ChallengeTracker'
 import { Route, NavLink, Switch } from 'react-router-dom';
 import Search from '../Search/Search';
 import BookInfo from '../BookInfo/BookInfo';
 import Login from '../Login/Login';
 
-//const NewBook = React.lazy(() => import('../NewBook/NewBook'))
+const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -75,7 +72,7 @@ class Books extends Component {
 						author={book.author}
 						img_url={book.img_url}
 						description={book.description}
-					clicked={() => this.bookSelectedHandler(book.id)} />
+						clicked={() => this.bookSelectedHandler(book.id)} />
 				</Link>
 
 				);
@@ -87,8 +84,7 @@ class Books extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/" exact>My Books</NavLink></li>
-
+                            <li><NavLink to="/books" exact>My Books</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
@@ -101,7 +97,6 @@ class Books extends Component {
                 </header>
                 <Switch>
                     <Route path="/login" component={Login} />
-					
 					<Route path="/goal" component={ChallengeTracker} />
                        <Route path="/new-book" render={(props) => (
                         <Suspense fallback={<div>Loading...</div>} >
@@ -109,8 +104,7 @@ class Books extends Component {
                         </Suspense>
                         )}
                     />
-                    
-					{this.state.selectedBookId == null ?
+					{!this.props.bookSelectedHandler ?
 					(<section className="Books">
 						{allBooks}				
 					</section> ) :
