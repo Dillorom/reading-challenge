@@ -69,6 +69,7 @@ class LoginForm extends Component {
 };
 
 LoginForm.propTypes = {
-    submit: PropTypes.func.isRequired
+    submit: PropTypes.func.isRequired,
+    //loading: PropTypes.bool
 };
 export default LoginForm;
