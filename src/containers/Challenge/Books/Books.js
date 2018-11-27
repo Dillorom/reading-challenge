@@ -65,6 +65,7 @@ class Books extends Component {
 	render(){
 		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
 		if (!this.state.error) {
+			console.log(this.state.allBooks)
 			allBooks = this.state.allBooks.map(book => {
 				return(
 				<Link to={"/books/" + book.id} key={book.id} >
