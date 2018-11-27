@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
 import './FullBook.css';
 
 class FullBook extends Component {
+    componentDidMount(){
+    }
     render(){
         let book = <p style={{textAlign: 'center'}}>Please, selected a book.</p>
         if (this.props.id){

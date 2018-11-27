@@ -10,6 +10,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Search from '../Search/Search';
 import BookInfo from '../BookInfo/BookInfo';
 import Login from '../Login/Login';
+import { withRouter } from 'react-router-dom';
 
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
@@ -104,18 +105,21 @@ class Books extends Component {
                         </Suspense>
                         )}
                     />
-					{!this.props.bookSelectedHandler ?
+					{this.state.selectedBookId === null ?
 					(<section className="Books">
 						{allBooks}				
 					</section> ) :
-					(<section className="FullBooks">
-						<Route path={this.props.match.url + '/:id'} render={(props) => <FullBook id={this.state.selectedBookId} books={this.state.allBooks} deleteBook={this.deleteBook}/>} /> 
+					(<section className="FullBook">
+						<Route path={this.props.match.url + '/:id'} render={(props) => 
+							<FullBook id={this.state.selectedBookId} 
+										books={this.state.allBooks} 
+										deleteBook={this.deleteBook}/>} /> 
+										{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props}  />} /> */}
 					</section> )}
                </Switch>
-				
             </div>
 		);
 	}
 };
 
-export default Books;
+export default withRouter(Books);
