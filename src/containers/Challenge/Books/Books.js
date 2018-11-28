@@ -81,6 +81,21 @@ class Books extends Component {
 			});
 		}
 
+	    if (this.state.selectedBookId){
+            const newArray = this.state.allBooks.filter(book => book.id === this.state.selectedBookId)
+            return(
+				<Route path={this.props.match.url + '/:id'} render={(props) => 
+					<FullBook 
+					title={newArray[0].title}
+					author={newArray[0].author}
+					img_url={newArray[0].img_url} alt={newArray[0].title}
+					description={newArray[0].description}
+					delete={() => this.deleteBook(this.state.selectedBookId)} /> } /> 
+            )
+        }
+        return newArray;
+    }
+
 		return (
 			<div className="Challenge">
                 <header>
@@ -106,17 +121,17 @@ class Books extends Component {
                         </Suspense>
                         )}
                     />
-					{this.state.selectedBookId === null ?
-					(<section className="Books">
+					// {this.state.selectedBookId === null ?
+					<section className="Books">
 						{allBooks}				
-					</section> ) :
-					(<section className="FullBook">
-						<Route path={this.props.match.url + '/:id'} render={(props) => 
-							<FullBook id={this.state.selectedBookId} 
-										books={this.state.allBooks} 
-										deleteBook={this.deleteBook}/>} /> 
-										{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props}  />} /> */}
-					</section> )}
+					</section> 
+					// <section className="FullBook">
+					// 	<Route path={this.props.match.url + '/:id'} render={(props) => 
+					// 		<FullBook id={this.state.selectedBookId} 
+					// 					books={this.state.allBooks} 
+					// 					deleteBook={this.deleteBook}/>} /> 
+					// 					{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props}  />} /> */}
+					// </section> 
                </Switch>
             </div>
 		);
