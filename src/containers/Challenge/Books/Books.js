@@ -84,14 +84,14 @@ class Books extends Component {
 	    if (this.state.selectedBookId !== null){
             return(
 				// <Route path={this.props.match.url + '/:id'} render={(props) => 
-				<Link to={"/books/" + this.state.selectedBookId}  >
+				// <Link to={"/books/" + this.state.selectedBookId}  >
 					<FullBook 
 						title={newArray[0].title}
 						author={newArray[0].author}
 						img_url={newArray[0].img_url} alt={newArray[0].title}
 						description={newArray[0].description}
 						delete={() => this.deleteBook(this.state.selectedBookId)} /> 
-				</Link>
+				// </Link>
 			)
 		}
 		
@@ -113,6 +113,7 @@ class Books extends Component {
                 </header>
                 <Switch>
                     <Route path="/login" component={Login} />
+					<Route path="/books/:id" component={FullBook} />
 					<Route path="/goal" component={ChallengeTracker} />
                        <Route path="/new-book" render={(props) => (
                         <Suspense fallback={<div>Loading...</div>} >
