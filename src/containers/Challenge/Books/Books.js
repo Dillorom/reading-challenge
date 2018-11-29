@@ -79,24 +79,23 @@ class Books extends Component {
 
 				);
 			});
-		}
-
-	    if (this.state.selectedBookId){
-            const newArray = this.state.allBooks.filter(book => book.id === this.state.selectedBookId)
+		};
+		const newArray = this.state.allBooks.filter(book => book.id === this.state.selectedBookId)
+	    if (this.state.selectedBookId !== null){
             return(
-				<Route path={this.props.match.url + '/:id'} render={(props) => 
+				// <Route path={this.props.match.url + '/:id'} render={(props) => 
+				<Link to={"/books/" + this.state.selectedBookId}  >
 					<FullBook 
-					title={newArray[0].title}
-					author={newArray[0].author}
-					img_url={newArray[0].img_url} alt={newArray[0].title}
-					description={newArray[0].description}
-					delete={() => this.deleteBook(this.state.selectedBookId)} /> } /> 
-            )
-        }
-        return newArray;
-    }
-
-		return (
+						title={newArray[0].title}
+						author={newArray[0].author}
+						img_url={newArray[0].img_url} alt={newArray[0].title}
+						description={newArray[0].description}
+						delete={() => this.deleteBook(this.state.selectedBookId)} /> 
+				</Link>
+			)
+		}
+		
+		return(
 			<div className="Challenge">
                 <header>
                     <nav>
@@ -119,21 +118,12 @@ class Books extends Component {
                         <Suspense fallback={<div>Loading...</div>} >
                             <NewBook addBook={this.addBook}/>
                         </Suspense>
-                        )}
-                    />
-					// {this.state.selectedBookId === null ?
-					<section className="Books">
-						{allBooks}				
-					</section> 
-					// <section className="FullBook">
-					// 	<Route path={this.props.match.url + '/:id'} render={(props) => 
-					// 		<FullBook id={this.state.selectedBookId} 
-					// 					books={this.state.allBooks} 
-					// 					deleteBook={this.deleteBook}/>} /> 
-					// 					{/* <Route path={this.props.match.url + '/:id'} render={(props) => <FullBook {...props}  />} /> */}
-					// </section> 
+                        )} />
+						<section className="Books">
+							{allBooks}				
+						</section> 
                </Switch>
-            </div>
+			</div>
 		);
 	}
 };
