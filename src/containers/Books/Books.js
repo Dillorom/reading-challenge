@@ -98,7 +98,7 @@ class Books extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/books" exact>My Books</NavLink></li>
+                            <li><NavLink to="/books" exact>Library</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-book',
                                 hash: '#submit',
