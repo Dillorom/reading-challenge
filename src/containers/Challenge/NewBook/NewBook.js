@@ -37,13 +37,13 @@ class NewBook extends Component {
                 <h1>Add a Book</h1>
                 <form onSubmit={this.postDataHandler}>
                     <label>Title</label>
-                    <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
+                    <input type="text" ref="title" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
                     <label>Author</label>
-                    <input type="text" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
+                    <input type="text" ref="author" value={this.state.author} onChange={(event) => this.setState({author: event.target.value})}/>
                     <label>Image URL</label>
-                    <input type="text" value={this.state.img_url} onChange={(event) => this.setState({img_url: event.target.value})}/>
+                    <input type="text" ref="img_url" value={this.state.img_url} onChange={(event) => this.setState({img_url: event.target.value})}/>
                     <label>Description</label> 
-                    <input type="text" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})}/>
+                    <input type="text" ref="description" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})}/>
                     <button type="submit">Add Book</button>
                 </form>
             </div>
