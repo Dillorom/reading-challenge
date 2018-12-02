@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import user from '../reducers/user';
+import user from './user';
 // const initialState = {
 // //need to set initial state
 // }
