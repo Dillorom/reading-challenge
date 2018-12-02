@@ -1,14 +1,12 @@
 import React, { Component, Suspense } from 'react';
 import './Books.css';
-import Book from '../../../components/Book/Book';
+import Book from '../../components/Book/Book';
 import { Link } from 'react-router-dom';
 import FullBook from '../FullBook/FullBook';
-import BookService from '../../../services/BookService';
+import BookService from '../../services/BookService';
 //import NewBook from '../NewBook/NewBook';
-import ChallengeTracker from '../../../components/ChallengeTracker/ChallengeTracker'
+import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker'
 import { Route, NavLink, Switch } from 'react-router-dom';
-import Search from '../Search/Search';
-import BookInfo from '../BookInfo/BookInfo';
 import Login from '../Login/Login';
 import { withRouter } from 'react-router-dom';
 

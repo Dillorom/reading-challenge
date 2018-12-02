@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Validator  from 'validator';
-import InlineError from '../../../components/InlineError/InlineError';
+import InlineError from '../../components/InlineError/InlineError';
 import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
