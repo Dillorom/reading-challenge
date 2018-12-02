@@ -4,7 +4,6 @@ import BookList from './BookList/BookList';
 import BookCount from './BookCount/BookCount';
 import SetGoal from './SetGoal';
 
-
 class ChallengeTracker extends Component {
     state = {
         goal: 0,
@@ -30,4 +29,5 @@ class ChallengeTracker extends Component {
         )
     }
 } 
+
 export default ChallengeTracker;

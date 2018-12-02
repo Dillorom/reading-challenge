@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import PropTypes from 'prop-types';
 
 const SetGoal =(props) => (
     <div>
@@ -9,5 +10,7 @@ const SetGoal =(props) => (
         </form>
     </div>
 )
-
+// SetGoal.propTypes = {
+//     goal: PropTypes.number.isRequired
+// }
 export default SetGoal;
