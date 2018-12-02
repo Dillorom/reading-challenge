@@ -2,6 +2,7 @@ import React from 'react';
 import './ChallengeTracker.css';
 import BookList from './BookList/BookList';
 import BookCount from './BookCount/BookCount';
+import SetGoal from './SetGoal';
 
 
 const ChallengeTracker = (props) => (
@@ -24,6 +25,7 @@ const ChallengeTracker = (props) => (
                }
            ]
        }/> */}
+       <SetGoal />
        <BookCount total={85} goal={100}/>
     </div>
     
