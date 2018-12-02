@@ -1,34 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ChallengeTracker.css';
 import BookList from './BookList/BookList';
 import BookCount from './BookCount/BookCount';
 import SetGoal from './SetGoal';
 
 
-const ChallengeTracker = (props) => (
-    <div className="ChallengeTracker">
-       {/* <BookList books={
-           [
-               {
-                    date: new Date("11/27/2018"),
-                    title: "Power of Meaning",
-                    author: "Emily Esfahani Smith",
-                    img_url: "https://images.gr-assets.com/books/1465653308l/30008950.jpg",
-​​                    description: "This wise, stirring book argues that the search for meaning can immeasurably deepen our lives and is far more fulfilling than the pursuit of personal happiness."
-               },
-               {
-                    date: new Date("11/26/2018"),    
-                    title: "Designing Your Life",
-                    author: " Bill Burnett, Dave Evans",
-                    img_url: "https://images.gr-assets.com/books/1476133952l/26046333.jpg",
-                    description: "Whether we’re 20, 40, 60 or older, many of us are still looking for an answer to that perennial question, ‘What do you want to be when you grow up?’ "  
-               }
-           ]
-       }/> */}
-       <SetGoal />
-       <BookCount total={85} goal={100}/>
-    </div>
-    
-);
+class ChallengeTracker extends Component {
+    state = {
+        goal: 0,
+        total: 0,
+    }
 
+    handleSubmit = () => {
+        this.setState({
+            goal: this.state.goal
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({goal: e.target.value})
+    }
+    
+    render(){
+        return(
+            <div className="ChallengeTracker">
+            <SetGoal goal={this.state.goal} submit={this.handleSubmit} change={this.handleChange}/>
+            <BookCount total={this.state.total} goal={this.state.goal}/>
+         </div>
+        )
+    }
+} 
 export default ChallengeTracker;
