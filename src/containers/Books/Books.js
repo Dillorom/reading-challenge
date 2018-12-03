@@ -105,12 +105,12 @@ class Books extends Component {
                                 search: '?quick-submit=true'
                             }}>Add Book</NavLink></li>
 							<li><NavLink to="/goal" exact>My Goal</NavLink></li>
-							<li><NavLink to="/login">Login</NavLink></li>
+							{/* <li><NavLink to="/login">Login</NavLink></li> */}
                         </ul>
                     </nav>
                 </header>
                 <Switch>
-                    <Route path="/login" component={Login} />
+                    {/* <Route path="/login" component={Login} /> */}
 					<Route path="/books/:id" component={FullBook} />
 					<Route path="/goal" component={ChallengeTracker} />
                        <Route path="/new-book" render={(props) => (

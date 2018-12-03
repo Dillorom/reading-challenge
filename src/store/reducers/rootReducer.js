@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import user from './user';
+import goal from './goal';
 // const initialState = {
 // //need to set initial state
 // }
@@ -9,5 +9,5 @@ import user from './user';
 // }
 
 export default combineReducers({
-    user
+    goal
 });
