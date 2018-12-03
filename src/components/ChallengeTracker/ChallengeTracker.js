@@ -6,23 +6,15 @@ import SetGoal from './SetGoal';
 import { connect } from 'react-redux';
 
 class ChallengeTracker extends Component {
-    state = {
-        goal: 0,
-        total: 0,
-    }
-
     handleSubmit = () => {
         this.setState({
             goal: this.state.goal
         })
       }
           
-    handleChange = (action, value) => {
+    handleChange = (event) => {
         // this.setState({goal: e.target.value})
-        switch ( action ) {
-            case 'SET_GOAL':
-                this.setState({ goal: value } )
-        }
+        this.props.set_goal();
     }
     
     render(){
@@ -42,4 +34,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ChallengeTracker);
+const mapDispatchToProps = dispatch => {
+    return {
+        set_goal: () => dispatch({ type: 'SET_GOAL' })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChallengeTracker);

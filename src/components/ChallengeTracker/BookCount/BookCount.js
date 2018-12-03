@@ -27,7 +27,5 @@ const BookCount = (props) => {
         </div>
     )
 }
-// BookCount.propTypes = {
-//     goal: PropTypes.number
-// }
+
 export default BookCount;
