@@ -2,9 +2,9 @@ const goal = (state = {goal: 0}, action) => {
   switch (action.type) {
     case "SET_GOAL":
     console.log('Current state.goal is: ', state.goal);
-          console.log('Updating state.goal to: ', state.goal + 1) //what is value
+    console.log(action.goal)
         return Object.assign({}, state, {
-        goal: state.goal.concat(state.goal + 1) //what is value
+        goal: state.goal + action.goal 
         })
 
     default:
