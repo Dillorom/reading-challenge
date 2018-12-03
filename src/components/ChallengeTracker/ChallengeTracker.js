@@ -15,16 +15,20 @@ class ChallengeTracker extends Component {
         this.setState({
             goal: this.state.goal
         })
-    }
-
-    handleChange = (e) => {
-        this.setState({goal: e.target.value})
+      }
+          
+    handleChange = (action, value) => {
+        // this.setState({goal: e.target.value})
+        switch ( action ) {
+            case 'SET_GOAL':
+                this.setState({ goal: value } )
+        }
     }
     
     render(){
         return(
             <div className="ChallengeTracker">
-            <SetGoal goal={this.props.goal} submit={this.handleSubmit} change={this.handleChange}/>
+            <SetGoal goal={this.props.goal} submit={this.handleSubmit} change={() => this.handleChange( 'SET_GOAL ')}/>
             <BookCount total={this.props.total} goal={this.props.goal}/>
          </div>
         )
