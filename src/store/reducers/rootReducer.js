@@ -1,13 +1,6 @@
 import { combineReducers } from 'redux';
-import goal from './goal';
-// const initialState = {
-// //need to set initial state
-// }
-
-// const rootReducer = (state = initialState, action) => {
-//     return state
-// }
+import setGoal from './goal';
 
 export default combineReducers({
-    goal
+    setGoal: setGoal
 });
