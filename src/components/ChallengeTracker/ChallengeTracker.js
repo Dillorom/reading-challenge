@@ -7,36 +7,26 @@ import { connect } from 'react-redux';
 import { setGoal } from '../../actions/index';
 
 class ChallengeTracker extends Component {
-    // state = {
-    //     goal: 0,
-    //     total: 0
-    // }
-    handleSubmit = () => {
-        this.props.setGoal();
-        // this.props.dispatch({type: 'SET_GOAL', goal: this.state})
-      }
-          
-    handleChange = (event) => {
-        // this.setState({goal: e.target.value})
-        this.props.setGoal();
+    state = {
+        total: 0
     }
+   
     
     render(){
         //debugger
         return(
             <div className="ChallengeTracker">
-            <SetGoal goal={this.props.goal} submit={this.handleSubmit} change={this.handleChange}/>
-           {/* // <BookCount total={this.total} goal={this.props.goal}/> */}
-            <BookCount goal={Object.values(this.props.goal)}/> 
+            <SetGoal goal={this.props.goal} setGoal={this.props.setGoal}/>
+            <BookCount goal={this.props.goal} total={this.total}/> 
+            {/* goal={Object.values(this.props.goal)} */}
          </div>
         )
     }
 };
 
 const mapStateToProps = state => {
-    //debugger
     return {
-        goal: state.goal,
+        goal: state.setGoal.goal
     }
 }
 

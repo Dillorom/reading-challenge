@@ -13,19 +13,18 @@ const BookCount = (props) => {
     return(
         <div className="book-count">
             <div className="total-books">
-                <h1>You have read <span>{props.total}</span> books so far.</h1>
+                {/* <h1>You have read <span>{props.total}</span> books so far.</h1> */}
             </div>
             <div className="goal">
                 <h1>Your goal is to read <span>{props.goal}</span> books this year.</h1>
             </div>
             <div className="progress">
-                <h1> You have made <span>{calcGoalProgress(
-                    props.total, 
-                    props.goal
-                )}</span> progress.</h1>
+                <h1> You have made <span> { props.goal}
+                </span> progress.</h1>
+                
             </div>
         </div>
     )
 }
-
+//Need to correctly parse props.total into an integer before displaying or calculating.
 export default BookCount;
