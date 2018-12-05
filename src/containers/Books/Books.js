@@ -9,19 +9,16 @@ import ChallengeTracker from '../../components/ChallengeTracker/ChallengeTracker
 import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 class Books extends Component {
-	state = {
-		allBooks: [],
-		selectedBookId: null
-	}
 
 	componentDidMount() {
-		BookService.fetchBooks().then(allBooks => this.setState({allBooks: allBooks})
+		BookService.fetchBooks().then(books => this.setState({books: books})
 	)}
 	
 	
@@ -35,7 +32,7 @@ class Books extends Component {
 
 	addBook = book => {
 		BookService.createBook(book).then(book => this.setState({
-			allBooks: this.state.allBooks.concat(book)
+			books: this.props.books.concat(book)
 		}))
 	}
 
@@ -46,11 +43,11 @@ class Books extends Component {
 		return fetch(`${API_URL}/books/${bookId}`, request)
 			.then(response => {
 				if (response.ok){
-					const index = this.state.allBooks.findIndex(book => book.id === bookId)  
+					const index = this.props.books.findIndex(book => book.id === bookId)  
 					this.setState({
-						allBooks: [
-							...this.state.allBooks.slice(0, index),
-							...this.state.allBooks.slice(index + 1)
+						books: [
+							...this.props.books.slice(0, index),
+							...this.props.books.slice(index + 1)
 						]
 					})
 				} else {
@@ -61,25 +58,41 @@ class Books extends Component {
 	}
 
 	render(){
-		let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
-		if (!this.state.error) {
-			console.log(this.state.allBooks)
-			allBooks = this.state.allBooks.map(book => {
-				return(
-				<Link to={"/books/" + book.id} key={book.id} >
-					 <Book
-						title={book.title} 
-						author={book.author}
-						img_url={book.img_url}
-						description={book.description}
-						clicked={() => this.bookSelectedHandler(book.id)} />
-				</Link>
+		// let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
+		// if (!this.state.error) {
+		// 	console.log(this.state.allBooks)
+		// 	allBooks = this.state.allBooks.map(book => {
+		// 		return(
+		// 		<Link to={"/books/" + book.id} key={book.id} >
+		// 			 <Book
+		// 				title={book.title} 
+		// 				author={book.author}
+		// 				img_url={book.img_url}
+		// 				description={book.description}
+		// 				clicked={() => this.bookSelectedHandler(book.id)} />
+		// 		</Link>
 
-				);
-			});
-		};
-		const newArray = this.state.allBooks.filter(book => book.id === this.state.selectedBookId)
-	    if (this.state.selectedBookId !== null){
+		// 		);
+		// 	});
+		// };
+
+		const renderBooks = () => this.props.books.map(book => {
+					return(
+					<Link to={"/books/" + book.id} key={book.id} >
+						 <Book
+							title={book.title} 
+							author={book.author}
+							img_url={book.img_url}
+							description={book.description}
+							clicked={() => this.bookSelectedHandler(book.id)} />
+					</Link>
+	
+					);
+				});
+
+
+		const newArray = this.props.books.filter(book => book.id === this.props.selectedBookId)
+	    if (this.props.selectedBookId !== null){
             return(
 				// <Route path={this.props.match.url + '/:id'} render={(props) => 
 				// <Link to={"/books/" + this.state.selectedBookId}  >
@@ -88,11 +101,11 @@ class Books extends Component {
 						author={newArray[0].author}
 						img_url={newArray[0].img_url} alt={newArray[0].title}
 						description={newArray[0].description}
-						delete={() => this.deleteBook(this.state.selectedBookId)} /> 
+						delete={() => this.deleteBook(this.props.selectedBookId)} /> 
 				// </Link>
 			)
 		}
-		
+		debugger
 		return(
 			<div className="Challenge">
                 <header>
@@ -119,12 +132,18 @@ class Books extends Component {
                         </Suspense>
                         )} />
 						<section className="Books">
-							{allBooks}				
+							{renderBooks}				
 						</section> 
                </Switch>
 			</div>
 		);
 	}
 };
-
-export default withRouter(Books);
+const mapStateToProps = state => {
+	//debugger
+	return {
+	  books: state.addBook.books,
+	  selectedBookId: state.addBook.selectedBookId
+	}
+  }
+export default connect(mapStateToProps)(withRouter(Books));

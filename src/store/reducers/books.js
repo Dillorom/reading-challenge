@@ -1,4 +1,8 @@
-const addBook = (state = {books: []}, action) => {
+const initialState = {
+  books: [],
+  selectedBookId: null
+}
+const addBook = (state = initialState, action) => {
 
     switch (action.type) {
       case "ADD_BOOK":
