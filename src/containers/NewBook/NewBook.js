@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NewBook.css';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class NewBook extends Component {
     state = {
@@ -12,18 +13,31 @@ class NewBook extends Component {
 
     }
 
-    postDataHandler = (e) => {
-        e.preventDefault();
-        const book = this.state;
-        this.props.addBook(book);
+    // postDataHandler = (e) => {
+    //     e.preventDefault();
+    //     const book = this.state;
+    //     this.props.addBook(book);
+    //     this.setState({
+    //         title: '',
+    //         author: '',
+    //         img_url: '',
+    //         description: '',
+    //         submitted: true
+    //     }) 
+    // }
+    handleSubmit = event => {
+        event.preventDefault();
         this.setState({
-            title: '',
-            author: '',
-            img_url: '',
-            description: '',
             submitted: true
-        }) 
-    }
+        })
+        this.props.dispatch({ type: "ADD_BOOK", payload: this.state })
+      }
+
+    handleChange = event => {
+        this.setState({
+          [event.target.ref]: event.target.value
+        });
+      }
    
     render() {
         let redirect = null;
@@ -35,7 +49,7 @@ class NewBook extends Component {
             <div className="NewBook">
                 {redirect}
                 <h1>Add a Book</h1>
-                <form onSubmit={this.postDataHandler}>
+                <form onSubmit={this.handleSubmit}>
                     <label>Title</label>
                     <input type="text" ref="title" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})}/>
                     <label>Author</label>
@@ -50,5 +64,9 @@ class NewBook extends Component {
         );
     }
 };
-
-export default NewBook;
+// mapDispatchToProps = dispatch => {
+//     return {
+//       addBook: formData => dispatch({ type: "ADD_BOOK", payload: formData })
+//     }
+//   }
+export default connect()(NewBook);
