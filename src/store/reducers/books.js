@@ -4,7 +4,7 @@ const addBook = (state = {books: []}, action) => {
       case "ADD_BOOK":
       console.log('Current statee is:', state.books);
       
-      console.log({ books: state.books.concat(action.payload.text) });
+      console.log({ books: state.books.concat(action.payload) });
  
       return { books: state.books.concat(action.payload) };
       default:
