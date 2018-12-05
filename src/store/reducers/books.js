@@ -2,18 +2,16 @@ const initialState = {
   books: [],
   selectedBookId: null
 }
-const addBook = (state = initialState, action) => {
+const manageBooks = (state = initialState, action) => {
 
     switch (action.type) {
       case "ADD_BOOK":
-      console.log('Current statee is:', state.books);
-      
-      console.log({ books: state.books.concat(action.payload) });
- 
-      return { books: state.books.concat(action.payload) };
+        return { books: state.books.concat(action.payload) };
+      case 'DELETE_BOOK':
+        return {books: state.books.filter(book => book.id !== action.payload)}
       default:
-      console.log("initial state is ", state)
+        console.log("initial state is ", state)
         return state;
     }
   };
-  export default addBook;
+  export default manageBooks;

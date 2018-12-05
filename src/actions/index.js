@@ -5,4 +5,16 @@ export const setGoal = goal => {
     };
   };
 
- 
+  export const addBook = book => {
+    return {
+      type: "ADD_BOOK",
+      book
+    };
+  };
+
+ export const deleteBook = bookId => {
+   return{
+    type: "DELETE_BOOK",
+    bookId
+   };
+ };

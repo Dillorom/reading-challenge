@@ -10,6 +10,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { addBook, deleteBook } from '../../actions/index';
 
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
@@ -101,11 +102,11 @@ class Books extends Component {
 						author={newArray[0].author}
 						img_url={newArray[0].img_url} alt={newArray[0].title}
 						description={newArray[0].description}
-						delete={() => this.deleteBook(this.props.selectedBookId)} /> 
+						delete={() => this.props.deleteBook(this.props.selectedBookId)} /> 
 				// </Link>
 			)
 		}
-		debugger
+	
 		return(
 			<div className="Challenge">
                 <header>
@@ -128,7 +129,7 @@ class Books extends Component {
 					<Route path="/goal" component={ChallengeTracker} />
                        <Route path="/new-book" render={(props) => (
                         <Suspense fallback={<div>Loading...</div>} >
-                            <NewBook addBook={this.addBook}/>
+                            <NewBook addBook={this.props.addBook}/>
                         </Suspense>
                         )} />
 						<section className="Books">
@@ -140,10 +141,10 @@ class Books extends Component {
 	}
 };
 const mapStateToProps = state => {
-	//debugger
 	return {
-	  books: state.addBook.books,
-	  selectedBookId: state.addBook.selectedBookId
+	  books: state.manageBooks.books,
+	  selectedBookId: state.manageBooks.selectedBookId
 	}
   }
-export default connect(mapStateToProps)(withRouter(Books));
+
+export default connect(mapStateToProps, {addBook, deleteBook})(withRouter(Books));

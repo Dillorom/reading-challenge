@@ -26,12 +26,11 @@ const BookService = {
         return fetch(`${API_URL}/books/${bookId}`, request)
             .then(response => {
                 if (response.ok){
-                    const index = this.state.allBooks.findIndex(book => book.id === bookId)  
-                    console.log(index)
+                    const index = this.props.books.findIndex(book => book.id === bookId)  
                     this.setState({
-                        allBooks: [
-                            ...this.state.allBooks.slice(0, index),
-                            ...this.state.allBooks.slice(index + 1)
+                        books: [
+                            ...this.props.books.slice(0, index),
+                            ...this.props.books.slice(index + 1)
                         ]
                     })
                 } else {
