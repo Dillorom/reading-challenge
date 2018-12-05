@@ -14,6 +14,9 @@ class SetGoal extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.setGoal(this.state.goal); 
+        this.setState({
+            goal: ''
+        })
 
 
     }
