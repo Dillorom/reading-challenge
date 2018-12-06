@@ -19,7 +19,7 @@ const BookCount = (props) => {
                 <h1>Your goal is to read <span>{props.goal}</span> books this year.</h1>
             </div>
             <div className="progress">
-                <h1> You have made <span> { props.goal}
+                <h1> You have made <span> {props.goal}
                 </span> progress.</h1>
                 
             </div>

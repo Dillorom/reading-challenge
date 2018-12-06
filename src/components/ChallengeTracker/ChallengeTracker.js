@@ -18,7 +18,6 @@ class ChallengeTracker extends Component {
             <div className="ChallengeTracker">
             <SetGoal goal={this.props.goal} setGoal={this.props.setGoal}/>
             <BookCount goal={this.props.goal} total={this.total}/> 
-            {/* goal={Object.values(this.props.goal)} */}
          </div>
         )
     }

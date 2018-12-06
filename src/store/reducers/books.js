@@ -5,6 +5,8 @@ const initialState = {
 const manageBooks = (state = initialState, action) => {
 
     switch (action.type) {
+      case 'FETCH_BOOKS':
+        return { ...state, books: action.payload }
       case "ADD_BOOK":
         return { books: state.books.concat(action.payload) };
       case 'DELETE_BOOK':
