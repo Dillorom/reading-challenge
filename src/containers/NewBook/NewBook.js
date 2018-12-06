@@ -43,14 +43,8 @@ class NewBook extends Component {
       }
    
     render() {
-        let redirect = null;
-        if (this.state.submitted){
-            
-            // redirect = <Redirect to="/books" />
-        }
         return(
             <div className="NewBook">
-                {redirect}
                 <h1>Add a Book</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Title</label>
@@ -67,9 +61,5 @@ class NewBook extends Component {
         );
     }
 };
-// mapDispatchToProps = dispatch => {
-//     return {
-//       addBook: formData => dispatch({ type: "ADD_BOOK", payload: formData })
-//     }
-//   }
+
 export default withRouter(connect()(NewBook));
