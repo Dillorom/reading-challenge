@@ -24,6 +24,7 @@ class Books extends Component {
 	
 	
 	bookSelectedHandler = (id) => {
+		debugger
 		this.props.history.push({pathname:'/books/' + id});
 		this.setState({
 			selectedBookId: id
@@ -31,32 +32,32 @@ class Books extends Component {
 		//this.props.history.push('/' + id);
 	}
 
-	addBook = book => {
-		BookService.createBook(book).then(book => this.setState({
-			books: this.props.books.concat(book)
-		}))
-	}
+	// addBook = book => {
+	// 	BookService.createBook(book).then(book => this.setState({
+	// 		books: this.props.books.concat(book)
+	// 	}))
+	// }
 
-	deleteBook = bookId => {
-		const request = {
-		method: 'DELETE'
-		}
-		return fetch(`${API_URL}/books/${bookId}`, request)
-			.then(response => {
-				if (response.ok){
-					const index = this.props.books.findIndex(book => book.id === bookId)  
-					this.setState({
-						books: [
-							...this.props.books.slice(0, index),
-							...this.props.books.slice(index + 1)
-						]
-					})
-				} else {
-					window.alert("Unable to delete the book.")
-				}
-			})
-			.catch(err => console.log("Received this error while trying to delete a book:", err))
-	}
+	// deleteBook = bookId => {
+	// 	const request = {
+	// 	method: 'DELETE'
+	// 	}
+	// 	return fetch(`${API_URL}/books/${bookId}`, request)
+	// 		.then(response => {
+	// 			if (response.ok){
+	// 				const index = this.props.books.findIndex(book => book.id === bookId)  
+	// 				this.setState({
+	// 					books: [
+	// 						...this.props.books.slice(0, index),
+	// 						...this.props.books.slice(index + 1)
+	// 					]
+	// 				})
+	// 			} else {
+	// 				window.alert("Unable to delete the book.")
+	// 			}
+	// 		})
+	// 		.catch(err => console.log("Received this error while trying to delete a book:", err))
+	// }
 
 	render(){
 		// let allBooks = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
@@ -91,21 +92,17 @@ class Books extends Component {
 					);
 				});
 
-
-		const newArray = this.props.books.filter(book => book.id === this.props.selectedBookId)
-	    if (this.props.selectedBookId !== null){
-            return(
-				// <Route path={this.props.match.url + '/:id'} render={(props) => 
-				// <Link to={"/books/" + this.state.selectedBookId}  >
-					<FullBook 
-						title={newArray[0].title}
-						author={newArray[0].author}
-						img_url={newArray[0].img_url} alt={newArray[0].title}
-						description={newArray[0].description}
-						delete={() => this.props.deleteBook(this.props.selectedBookId)} /> 
-				// </Link>
-			)
-		}
+		// const newArray = this.props.books.filter(book => book.id === this.props.selectedBookId)
+	    // if (this.props.selectedBookId !== null){
+        //     return(
+		// 			<FullBook 
+		// 				title={newArray[0].title}
+		// 				author={newArray[0].author}
+		// 				img_url={newArray[0].img_url} alt={newArray[0].title}
+		// 				description={newArray[0].description}
+		// 				delete={() => this.props.deleteBook(this.props.selectedBookId)} /> 
+		// 	)
+		// }
 	
 		return(
 			<div className="Challenge">
@@ -115,8 +112,8 @@ class Books extends Component {
                             <li><NavLink to="/books" exact>Library</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-book',
-                                hash: '#submit',
-                                search: '?quick-submit=true'
+                                // hash: '#submit',
+                                // search: '?quick-submit=true'
                             }}>Add Book</NavLink></li>
 							<li><NavLink to="/goal" exact>My Goal</NavLink></li>
 							<li><NavLink to="/login">Login</NavLink></li>

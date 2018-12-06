@@ -43,7 +43,7 @@ class NewBook extends Component {
         let redirect = null;
         if (this.state.submitted){
             alert("Your book has been added!")
-            redirect = <Redirect to="/" />
+            redirect = <Redirect to="/books" />
         }
         return(
             <div className="NewBook">

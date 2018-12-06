@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { login } from '../../../actions/index';
 
 class Login extends Component {
     state = {
@@ -9,7 +10,7 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: "LOGIN", payload: this.state })
+        this.props.login()
     }
 
     handleChange = event => {
@@ -33,4 +34,4 @@ class Login extends Component {
     }
 }
 
-export default connect()(Login);
+export default connect(null, {login})(Login);
