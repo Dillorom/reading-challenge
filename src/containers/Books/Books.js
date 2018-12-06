@@ -24,7 +24,7 @@ class Books extends Component {
 	
 	
 	bookSelectedHandler = (id) => {
-		debugger
+	
 		this.props.history.push({pathname:'/books/' + id});
 		this.setState({
 			selectedBookId: id
@@ -130,7 +130,7 @@ class Books extends Component {
                         </Suspense>
                         )} />
 						<section className="Books">
-							{renderBooks}				
+							{renderBooks()}				
 						</section> 
                </Switch>
 			</div>

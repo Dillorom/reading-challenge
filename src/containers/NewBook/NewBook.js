@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './NewBook.css';
-import { Redirect } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class NewBook extends Component {
@@ -30,8 +30,11 @@ class NewBook extends Component {
         this.setState({
             submitted: true
         })
+
         this.props.dispatch({ type: "ADD_BOOK", payload: this.state })
-      }
+        alert("Your book has been added!")
+        this.props.history.push('/books') //should be books/;id
+    }
 
     handleChange = event => {
         this.setState({
@@ -42,8 +45,8 @@ class NewBook extends Component {
     render() {
         let redirect = null;
         if (this.state.submitted){
-            alert("Your book has been added!")
-            redirect = <Redirect to="/books" />
+            
+            // redirect = <Redirect to="/books" />
         }
         return(
             <div className="NewBook">
@@ -69,4 +72,4 @@ class NewBook extends Component {
 //       addBook: formData => dispatch({ type: "ADD_BOOK", payload: formData })
 //     }
 //   }
-export default connect()(NewBook);
+export default withRouter(connect()(NewBook));
