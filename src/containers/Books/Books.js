@@ -10,7 +10,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addBook, deleteBook } from '../../actions/index';
+import { addBook, deleteBook, fetchBooks } from '../../actions/index';
 
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
@@ -19,8 +19,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 class Books extends Component {
 
 	componentDidMount() {
-		BookService.fetchBooks().then(books => this.setState({books: books})
-	)}
+		// BookService.fetchBooks().then(books => this.setState({books: books})
+		this.props.fetchBooks()
+	}
 	
 	
 	bookSelectedHandler = (id) => {
@@ -144,4 +145,4 @@ const mapStateToProps = state => {
 	}
   }
 
-export default withRouter(connect(mapStateToProps, {addBook, deleteBook})(Books));
+export default withRouter(connect(mapStateToProps, {addBook, deleteBook, fetchBooks})(Books));
