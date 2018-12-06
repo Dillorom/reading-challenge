@@ -12,6 +12,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { addBook, deleteBook, fetchBooks } from '../../actions/index';
 
+
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -19,13 +20,10 @@ const API_URL = process.env.REACT_APP_API_URL;
 class Books extends Component {
 
 	componentDidMount() {
-		// BookService.fetchBooks().then(books => this.setState({books: books})
 		this.props.fetchBooks()
 	}
 	
-	
 	bookSelectedHandler = (id) => {
-	
 		this.props.history.push({pathname:'/books/' + id});
 		this.setState({
 			selectedBookId: id
@@ -79,7 +77,7 @@ class Books extends Component {
 		// 	});
 		// };
 
-		const renderBooks = () => this.props.books.map(book => {
+		const renderBooks = () => this.props.books.map((book) => {
 					return(
 					<Link to={"/books/" + book.id} key={book.id} >
 						 <Book

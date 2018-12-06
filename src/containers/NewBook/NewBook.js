@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './NewBook.css';
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addBook } from '../../actions/index';
+import uuid from 'uuid';
 
 class NewBook extends Component {
     state = {
@@ -28,10 +30,11 @@ class NewBook extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.setState({
-            submitted: true
+            submitted: true,
+            id: uuid()
         })
-
-        this.props.dispatch({ type: "ADD_BOOK", payload: this.state })
+        this.props.addBook(this.state);
+        // this.props.dispatch({ type: "ADD_BOOK", payload: this.state })
         alert("Your book has been added!")
         this.props.history.push('/books') //should be books/;id
     }
@@ -62,4 +65,4 @@ class NewBook extends Component {
     }
 };
 
-export default withRouter(connect()(NewBook));
+export default withRouter(connect(null, { addBook })(NewBook));
