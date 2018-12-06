@@ -77,7 +77,8 @@ class Books extends Component {
 		// 	});
 		// };
 
-		const renderBooks = () => this.props.books.map((book) => {
+		const renderBooks = () => this.props.books.map(book => {
+			// debugger
 					return(
 					<Link to={"/books/" + book.id} key={book.id} >
 						 <Book
@@ -90,18 +91,6 @@ class Books extends Component {
 	
 					);
 				});
-
-		// const newArray = this.props.books.filter(book => book.id === this.props.selectedBookId)
-	    // if (this.props.selectedBookId !== null){
-        //     return(
-		// 			<FullBook 
-		// 				title={newArray[0].title}
-		// 				author={newArray[0].author}
-		// 				img_url={newArray[0].img_url} alt={newArray[0].title}
-		// 				description={newArray[0].description}
-		// 				delete={() => this.props.deleteBook(this.props.selectedBookId)} /> 
-		// 	)
-		// }
 	
 		return(
 			<div className="Challenge">

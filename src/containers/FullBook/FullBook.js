@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
 import './FullBook.css';
+import { connect } from 'react-redux';
+import { deleteBook } from '../../actions/index';
+import FullBookChild from '../../components/FullBookChild';
 
-const FullBook = (props) => (
-    <div className="FullBook">
-        <h1>{props.title}</h1>
-        <h2>{props.author}</h2>
-        <img src={props.img_url} alt={props.title}/>
-        <p>{props.description}</p>
-        <div className="Edit">
-            <button onClick={props.delete} className="Delete">Delete</button>
-        </div>
-    </div>
-);
-
-export default FullBook;
+class FullBook extends Component {
+    render(){
+        // const bookList
+        // if (this.props.selectedBookId !== null) {
+        //     bookList = this.props.books.map(book => {
+        //         return <FullBookChild title={book.title} author={book.author} 
+        //             img_url={book.img_url} description={book.description}
+        //             delete={this.props.delete} />
+        //     })
+        //     return bookList;
+        // }
+        const bookList = this.props.books.map(book => {
+                    return <FullBookChild title={book.title} author={book.author} 
+                        img_url={book.img_url} description={book.description}
+                        delete={this.props.delete} />
+                })
+        return(
+            <div>
+                {/* {this.props.selectedBookId} ? {bookList} : null */}
+                {bookList}
+            </div>
+        )
+    }
+};
+const mapStateToProps = state => {
+    return{
+        books: state.manageBooks.books,
+        selectedBookId: state.manageBooks.selectedBookId 
+    }
+}
+export default connect(mapStateToProps, { deleteBook })(FullBook);
