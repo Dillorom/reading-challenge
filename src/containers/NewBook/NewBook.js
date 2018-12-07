@@ -11,14 +11,11 @@ class NewBook extends Component {
         author: '',
         img_url: '',
         description: '',
-        submitted: false
-
     }
 
     handleSubmit = event => {
         event.preventDefault();
         this.setState({
-            submitted: true,
             id: uuid()
         })
         this.props.addBook(this.state);
