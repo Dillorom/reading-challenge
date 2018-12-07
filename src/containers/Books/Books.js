@@ -10,7 +10,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addBook, deleteBook, fetchBooks } from '../../actions/index';
+import { addBook, deleteBook, fetchBooks, viewBook } from '../../actions/index';
 
 
 const NewBook = React.lazy(() => import('../NewBook/NewBook'))
@@ -24,10 +24,13 @@ class Books extends Component {
 	}
 	
 	bookSelectedHandler = (id) => {
+		let filter = this.props.books.filter(book => book.id === id)
+		this.props.viewBook(filter);
+		// this.setState({
+		// 	selectedBookId: id
+		// })
+		
 		this.props.history.push({pathname:'/books/' + id});
-		this.setState({
-			selectedBookId: id
-		})
 		//this.props.history.push('/' + id);
 	}
 
@@ -132,4 +135,4 @@ const mapStateToProps = state => {
 	}
   }
 
-export default withRouter(connect(mapStateToProps, {addBook, deleteBook, fetchBooks})(Books));
+export default withRouter(connect(mapStateToProps, {addBook, deleteBook, fetchBooks, viewBook})(Books));

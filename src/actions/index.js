@@ -7,6 +7,14 @@ export const setGoal = goal => {
     };
   };
 
+
+  export const viewBook = (payload) => {
+    return {
+      type: 'VIEW_BOOK',
+      payload
+    }
+  }
+  
   export const fetchBooks = () => {
     let data = {
       method: 'GET',
@@ -16,6 +24,8 @@ export const setGoal = goal => {
         //'Authorization': sessionStorage.jwt
       }
     }
+
+   
   
     return dispatch => {
       fetch(`${ API_URL }/books`, data)
