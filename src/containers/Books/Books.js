@@ -9,7 +9,7 @@ import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchBooks, viewBook } from '../../actions/index';
-const NewBook = React.lazy(() => import('../NewBook/NewBook'))
+import NewBook from '../NewBook/NewBook';
 
 class Books extends Component {
 
@@ -43,11 +43,7 @@ class Books extends Component {
                     <nav>
                         <ul>
                             <li><NavLink to="/books" exact>Library</NavLink></li>
-                            <li><NavLink to={{
-                                pathname: '/new-book',
-                                // hash: '#submit',
-                                // search: '?quick-submit=true'
-                            }}>Add Book</NavLink></li>
+                            <li><NavLink to={{pathname: '/new-book'}}>Add Book</NavLink></li>
 							<li><NavLink to="/goal" exact>My Goal</NavLink></li>
 							<li><NavLink to="/login">Login</NavLink></li>
                         </ul>
