@@ -16,7 +16,7 @@ class Books extends Component {
 	componentDidMount() {
 		this.props.fetchBooks()
 	}
-	
+
 	bookSelectedHandler = (id) => {
 		let filter = this.props.books.filter(book => book.id === id)
 		this.props.viewBook(filter);
