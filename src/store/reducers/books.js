@@ -8,7 +8,7 @@ const manageBooks = (state = initialState, action) => {
       case 'FETCH_BOOKS':
         return { ...state, books: action.payload }
       case "ADD_BOOK":
-        return { books: state.books.concat(action.payload) };
+        return { ...state, books: state.books.concat(action.payload) };
       case 'DELETE_BOOK':
         return {books: state.books.filter(book => book.id !== action.payload)}
       default:
