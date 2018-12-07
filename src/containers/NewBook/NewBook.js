@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './NewBook.css';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addBook } from '../../actions/index';
 import uuid from 'uuid';
@@ -15,18 +15,6 @@ class NewBook extends Component {
 
     }
 
-    // postDataHandler = (e) => {
-    //     e.preventDefault();
-    //     const book = this.state;
-    //     this.props.addBook(book);
-    //     this.setState({
-    //         title: '',
-    //         author: '',
-    //         img_url: '',
-    //         description: '',
-    //         submitted: true
-    //     }) 
-    // }
     handleSubmit = event => {
         event.preventDefault();
         this.setState({
@@ -34,9 +22,8 @@ class NewBook extends Component {
             id: uuid()
         })
         this.props.addBook(this.state);
-        // this.props.dispatch({ type: "ADD_BOOK", payload: this.state })
         alert("Your book has been added!")
-        this.props.history.push('/books') //should be books/;id
+        this.props.history.push('/books') 
     }
 
     handleChange = event => {

@@ -1,6 +1,5 @@
 const initialState = {
-  books: [],
-  selectedBookId: null
+  books: []
 }
 const manageBooks = (state = initialState, action) => {
 
@@ -12,7 +11,6 @@ const manageBooks = (state = initialState, action) => {
       case 'DELETE_BOOK':
         return {...state, books: state.books.filter(book => book.id !== action.payload)}
       default:
-        console.log("initial state is ", state)
         return state;
     }
   };

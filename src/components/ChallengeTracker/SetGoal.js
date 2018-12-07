@@ -9,18 +9,16 @@ class SetGoal extends Component {
         this.setState({
             [event.target.id]: event.target.value
         })
-        
-
     }
+    
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.setGoal(this.state.goal); 
         this.setState({
             goal: ''
         })
-
-
     }
+
     render(){
         return(
             <div>
