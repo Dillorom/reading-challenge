@@ -9,7 +9,7 @@ const manageBooks = (state = initialState, action) => {
       case "ADD_BOOK":
         return { ...state, books: state.books.concat(action.payload)}
       case 'DELETE_BOOK':
-        return {...state, books: state.books.filter(book => book.id !== action.payload)}
+        return {...state, books: state.books.filter(book => book.id !== action.payload.id)}
       default:
         return state;
     }
