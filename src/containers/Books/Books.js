@@ -8,7 +8,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchBooks, viewBook } from '../../actions/index';
+import { fetchBooks, viewBook, likeCounter } from '../../actions/index';
 import NewBook from '../NewBook/NewBook';
 
 class Books extends Component {
@@ -23,6 +23,12 @@ class Books extends Component {
 		this.props.history.push({pathname:'/books/' + id});
 	}
 
+	handleLikeClick = () => {
+		// let filter = this.props.books.filter(book => book.id === id)
+		this.props.likeCounter();
+		// this.props.history.push('/books')
+	}
+
 	render(){
 		const renderBooks = () => this.props.books.map(book => {
 			return(
@@ -32,7 +38,9 @@ class Books extends Component {
 					title={book.title} 
 					author={book.author}
 					img_url={book.img_url}
-					description={book.description} />
+					description={book.description}
+					counter={this.props.counter}
+					likeCounter={this.handleLikeClick} />
 					
 		
 			</div>
@@ -71,7 +79,8 @@ class Books extends Component {
 const mapStateToProps = state => {
 	return {
 	  books: state.manageBooks.books,
+	  counter: state.manageBooks.counter
 	}
   }
 
-export default withRouter(connect(mapStateToProps, { fetchBooks, viewBook })(Books));
+export default withRouter(connect(mapStateToProps, { fetchBooks, viewBook, likeCounter })(Books));

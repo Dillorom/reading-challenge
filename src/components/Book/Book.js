@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import './Book.css';
-import {connect} from 'react-redux';
 
 class Book extends Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        this.props.dispatch({ type: 'INCREMENT_LIKE_COUNTER' });
+        this.props.likeCounter()
     }
 
     callApi = () => {
@@ -51,10 +50,6 @@ render(){
 //     </div>
 
 // );
-const mapStateToProps = state => {
-    return {
-         counter: state.likeCounter.counter,
-    }
-}
 
-export default connect(mapStateToProps)(Book);
+
+export default Book;

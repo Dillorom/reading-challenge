@@ -6,6 +6,13 @@ export const setGoal = goal => {
       goal
     };
   };
+  
+  export const likeCounter = (payload) => {
+    return {
+      type: 'INCREMENT_LIKE_COUNTER',
+      payload
+    }
+   }
 
 
   export const viewBook = (payload) => {
