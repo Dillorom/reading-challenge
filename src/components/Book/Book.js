@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
 import './Book.css';
-
-
+import {connect} from 'react-redux';
 
 class Book extends Component {
-    state = {
-        counter: 0
-    }
 
     handleClick = (e) => {
         e.preventDefault();
-        this.setState({
-            counter: this.state.counter + 1
-        })
-
+        this.props.dispatch({ type: 'INCREMENT_LIKE_COUNTER' });
     }
 
     callApi = () => {
@@ -25,21 +18,12 @@ class Book extends Component {
               //'Authorization': sessionStorage.jwt
             }
           }
-          console.log('a')
           fetch('http://localhost:3000/api/books', data)
             .then(response => {
-                console.log('b')
                 return response.json()
             })
-            .then(books => console.log('c', books))
-            console.log('d')
-
-            //a b c + books d 
+            .then(books => console.log( books))
     }
-
-
-   
-
 render(){
     return(
         <div className="Book" onClick={this.props.clicked}>
@@ -49,8 +33,8 @@ render(){
                     <img className="bookImage" src={this.props.img_url} alt={this.props.title}/>
                     <button onClick={this.handleClick}>Like</button>
                     <button onClick={this.callApi}>Call Api</button>
-                    <p>{this.state.counter}</p>
-                    </div>
+                    <p>{this.props.counter}</p>
+                </div>
             </div>
         )
     }
@@ -67,5 +51,10 @@ render(){
 //     </div>
 
 // );
+const mapStateToProps = state => {
+    return {
+         counter: state.likeCounter.counter,
+    }
+}
 
-export default Book;
+export default connect(mapStateToProps)(Book);
