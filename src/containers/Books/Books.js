@@ -26,14 +26,16 @@ class Books extends Component {
 	render(){
 		const renderBooks = () => this.props.books.map(book => {
 			return(
-			<Link to={"/books/" + book.id} key={book.id} >
+		
+			<div key={book.id}> 
 					<Book
 					title={book.title} 
 					author={book.author}
 					img_url={book.img_url}
-					description={book.description}
-					clicked={() => this.bookSelectedHandler(book.id)} />
-			</Link>
+					description={book.description} />
+					
+		
+			</div>
 			);
 		});
 	
