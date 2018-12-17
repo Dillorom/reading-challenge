@@ -23,9 +23,10 @@ class Books extends Component {
 		this.props.history.push({pathname:'/books/' + id});
 	}
 
-	handleLikeClick = () => {
-		// let filter = this.props.books.filter(book => book.id === id)
-		this.props.likeCounter();
+	handleLikeClick = (bookId) => {
+		let filter = this.props.books.filter(book => book.id === bookId)
+		//debugger
+		this.props.likeCounter(filter);
 		// this.props.history.push('/books')
 	}
 
@@ -40,7 +41,8 @@ class Books extends Component {
 					img_url={book.img_url}
 					description={book.description}
 					counter={this.props.counter}
-					likeCounter={this.handleLikeClick} />
+					likeCounter={this.handleLikeClick}
+					id={book.id} />
 					
 		
 			</div>

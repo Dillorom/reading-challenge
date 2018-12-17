@@ -7,10 +7,18 @@ export const setGoal = goal => {
     };
   };
   
-  export const likeCounter = (payload) => {
+  // export const likeCounter = (id) => {
+  //   //debugger
+  //   return {
+  //     type: 'INCREMENT_LIKE_COUNTER',
+  //     payload: id
+  //   }
+  //  }
+  export const likeCounter = (book) => {
+    //debugger
     return {
       type: 'INCREMENT_LIKE_COUNTER',
-      payload
+      payload: Object.assign({}, book, { counter: 0 })
     }
    }
 

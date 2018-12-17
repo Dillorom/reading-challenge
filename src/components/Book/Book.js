@@ -3,9 +3,8 @@ import './Book.css';
 
 class Book extends Component {
 
-    handleClick = (e) => {
-        e.preventDefault();
-        this.props.likeCounter()
+    handleClick = (id) => {
+        this.props.likeCounter(id)
     }
 
     callApi = () => {
@@ -30,7 +29,7 @@ render(){
         <div className="Info">
                 <div className="Author">{this.props.author}</div>
                     <img className="bookImage" src={this.props.img_url} alt={this.props.title}/>
-                    <button onClick={this.handleClick}>Like</button>
+                    <button onClick={() => this.handleClick(this.props.id)}>Like</button>
                     <button onClick={this.callApi}>Call Api</button>
                     <p>{this.props.counter}</p>
                 </div>
