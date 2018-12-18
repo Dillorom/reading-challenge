@@ -14,7 +14,7 @@ import NewBook from '../NewBook/NewBook';
 class Books extends Component {
 
 	componentDidMount() {
-		this.props.fetchBooks()
+		// this.props.fetchBooks()
 	}
 
 	bookSelectedHandler = (id) => {
@@ -80,7 +80,9 @@ class Books extends Component {
 	}
 };
 const mapStateToProps = state => {
+	//debugger
 	return {
+		
 	  books: state.manageBooks.books,
 	}
   }

@@ -10,15 +10,16 @@ class Book extends Component {
     }
 
 //    componentDidMount= () => {
-//        this.setState({
-//            counter: this.props.counter
-//        })
+//       debugger
 //     }
 
    
     handleClick = (id) => {
+        //debugger
+        this.setState({ counter: this.state.counter + 1 })
         this.props.likeCounter(id)
-    }
+       // debugger
+      }
 
     callApi = () => {
         let data = {

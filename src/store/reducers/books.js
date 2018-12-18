@@ -19,15 +19,15 @@ const manageBooks = (state = initialState, action) => {
         likedBook = state.books[index];
         likedBookLikes = likedBook.likes
         // debugger
-        // return { ...state, likedBookLikes: likedBookLikes + 1}
-        return {
-          ...state.books.slice(0, index),
-          ...state, likedBookLikes: likedBookLikes + 1,
-          ...state.books.slice(index + 1)
-    };
+    //     // return { ...state, likedBookLikes: likedBookLikes + 1}
+    //     return {
+    //       ...state.books.slice(0, index),
+    //       ...state, likedBookLikes: likedBookLikes + 1,
+    //       ...state.books.slice(index + 1)
+    // };
       default:
       //debugger
-        return state.books;
+        return state;
     }
   };
   export default manageBooks;

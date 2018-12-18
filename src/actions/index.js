@@ -24,13 +24,13 @@ export const setGoal = goal => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(bookId)
+      body: JSON.stringify(book)
     }
 
     return dispatch => {
       fetch(`${ API_URL }/books`, data)
         .then(response => response.json())
-        .then(book => console.log(book.likes))
+        .then(book => console.log(bookId))
         .then( book => dispatch({
           type: 'INCREMENT_LIKE_COUNTER',
           payload: bookId
@@ -38,7 +38,6 @@ export const setGoal = goal => {
         .catch(err => err)
      }
   }
-   
 
   export const viewBook = (payload) => {
     return {
