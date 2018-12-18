@@ -14,14 +14,31 @@ export const setGoal = goal => {
   //     payload: id
   //   }
   //  }
-  export const likeCounter = (book) => {
-    //debugger
-    return {
-      type: 'INCREMENT_LIKE_COUNTER',
-      payload: Object.assign({}, book, { counter: 0 })
-    }
-   }
 
+  
+  export const likeCounter = (bookId) => {
+    //debugger
+    let data = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bookId)
+    }
+
+    return dispatch => {
+      fetch(`${ API_URL }/books`, data)
+        .then(response => response.json())
+        .then(book => console.log(book.likes))
+        .then( book => dispatch({
+          type: 'INCREMENT_LIKE_COUNTER',
+          payload: bookId
+        }))
+        .catch(err => err)
+     }
+  }
+   
 
   export const viewBook = (payload) => {
     return {

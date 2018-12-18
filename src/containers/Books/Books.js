@@ -26,12 +26,14 @@ class Books extends Component {
 	handleLikeClick = (bookId) => {
 		let filter = this.props.books.filter(book => book.id === bookId)
 		//debugger
-		this.props.likeCounter(filter);
+		this.props.likeCounter(filter[0].id);
 		// this.props.history.push('/books')
 	}
 
 	render(){
+		//debugger
 		const renderBooks = () => this.props.books.map(book => {
+			//debugger
 			return(
 		
 			<div key={book.id}> 
@@ -40,11 +42,10 @@ class Books extends Component {
 					author={book.author}
 					img_url={book.img_url}
 					description={book.description}
-					counter={this.props.counter}
+					counter={book.likes}
 					likeCounter={this.handleLikeClick}
 					id={book.id} />
-					
-		
+			
 			</div>
 			);
 		});
@@ -81,7 +82,6 @@ class Books extends Component {
 const mapStateToProps = state => {
 	return {
 	  books: state.manageBooks.books,
-	  counter: state.manageBooks.counter
 	}
   }
 

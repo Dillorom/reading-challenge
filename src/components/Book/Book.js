@@ -2,7 +2,20 @@ import React, {Component} from 'react';
 import './Book.css';
 
 class Book extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            counter: this.props.counter
+        }
+    }
 
+//    componentDidMount= () => {
+//        this.setState({
+//            counter: this.props.counter
+//        })
+//     }
+
+   
     handleClick = (id) => {
         this.props.likeCounter(id)
     }
@@ -23,6 +36,7 @@ class Book extends Component {
             .then(books => console.log( books))
     }
 render(){
+    //debugger
     return(
         <div className="Book" onClick={this.props.clicked}>
             <h3>{this.props.title}</h3>
@@ -31,7 +45,7 @@ render(){
                     <img className="bookImage" src={this.props.img_url} alt={this.props.title}/>
                     <button onClick={() => this.handleClick(this.props.id)}>Like</button>
                     <button onClick={this.callApi}>Call Api</button>
-                    <p>{this.props.counter}</p>
+                    <p>{this.state.counter}</p>
                 </div>
             </div>
         )
