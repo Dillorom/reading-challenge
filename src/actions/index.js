@@ -16,7 +16,7 @@ export const setGoal = goal => {
   //  }
 
   
-  export const likeCounter = (bookId) => {
+  export const likeCounter = (book) => {
     //debugger
     let data = {
       method: 'POST',
@@ -30,10 +30,10 @@ export const setGoal = goal => {
     return dispatch => {
       fetch(`${ API_URL }/books`, data)
         .then(response => response.json())
-        .then(book => console.log(bookId))
+        //.then(returnedData => console.log(book))
         .then( book => dispatch({
           type: 'INCREMENT_LIKE_COUNTER',
-          payload: bookId
+          payload: book
         }))
         .catch(err => err)
      }

@@ -2,6 +2,7 @@ const initialState = {
   books: [], 
   }
 const manageBooks = (state = initialState, action) => {
+  //debugger
   let index;
   let likedBook;
   let likedBookLikes;
@@ -15,18 +16,18 @@ const manageBooks = (state = initialState, action) => {
         return {...state, books: state.books.filter(book => book.id !== action.payload.id)}
       case "INCREMENT_LIKE_COUNTER":
         // return {...state, counter: state.counter + 1, books: state.books.filter(book => book.id == action.payload)}
-        index = state.books.findIndex(book => book.id === action.payload); 
+        index = state.books.findIndex(book => book.id === action.payload[0].id); 
         likedBook = state.books[index];
         likedBookLikes = likedBook.likes
-        // debugger
-    //     // return { ...state, likedBookLikes: likedBookLikes + 1}
-    //     return {
-    //       ...state.books.slice(0, index),
-    //       ...state, likedBookLikes: likedBookLikes + 1,
-    //       ...state.books.slice(index + 1)
-    // };
+        debugger
+        // return { ...state, likedBookLikes: likedBookLikes + 1}
+        return {
+          ...state.books.slice(0, index),
+          ...state, likedBookLikes: likedBookLikes + 1,
+          ...state.books.slice(index + 1)
+    };
       default:
-      //debugger
+      
         return state;
     }
   };

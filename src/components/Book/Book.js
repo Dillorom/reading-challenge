@@ -8,11 +8,6 @@ class Book extends Component {
             counter: this.props.counter
         }
     }
-
-//    componentDidMount= () => {
-//       debugger
-//     }
-
    
     handleClick = (id) => {
         //debugger
