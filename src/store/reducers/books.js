@@ -20,6 +20,7 @@ const manageBooks = (state = initialState, action) => {
         index = state.books.findIndex(book => book.id === action.payload.id); 
         likedBook = state.books[index];
         likedBookLikes = likedBook.likes
+        debugger
         return { ...state, likedBookLikes: likedBookLikes + 1};
       
     //     return {

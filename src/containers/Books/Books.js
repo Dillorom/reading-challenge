@@ -33,6 +33,7 @@ class Books extends Component {
 	handleSortButton(event){
 		//debugger
 		this.props.sortBooksByLikes(this.props.books)
+		this.setState({refresh: true})
 	  }
 
 	render(){
