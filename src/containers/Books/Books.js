@@ -26,7 +26,7 @@ class Books extends Component {
 	handleLikeClick = (bookId) => {
 		let filter = this.props.books.filter(book => book.id === bookId)
 		//debugger
-		this.props.likeCounter(filter[0]);
+		this.props.likeCounter(filter[0], filter[0].id);
 		// this.props.history.push('/books')
 	}
 

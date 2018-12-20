@@ -16,26 +16,29 @@ export const setGoal = goal => {
   //  }
 
   
-  export const likeCounter = (book) => {
-    
+  export const likeCounter = (book, id) => {
+    let likes = book.likes;
+    let  newbook = {...book, likes: book.likes +1}
+      
     let data = {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*'
       },
-      body: JSON.stringify(book)
+      body: JSON.stringify(newbook)
     }
     //debugger
     return dispatch => {
-      fetch(`${API_URL}/books`, data)
+      fetch(`${API_URL}/books/${ id }`, data)
         // .then(response => response.json())
         .then(response => response.json())
         //.then(console.log())
         // .then(returnedData => console.log(book))
-        .then(book => dispatch({
+        .then(newbook => dispatch({
           type: 'INCREMENT_LIKE_COUNTER',
-          payload: book
+          payload: newbook
         }))
       //console.log("this is book: ", book))
         .catch(err => err)
