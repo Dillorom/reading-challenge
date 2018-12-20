@@ -19,17 +19,18 @@ const manageBooks = (state = initialState, action) => {
    
         index = state.books.findIndex(book => book.id === action.payload.id); 
         likedBook = state.books[index];
-        //debugger
         likedBookLikes = likedBook.likes
-      
-        return { ...state, ...state.books, likedBookLikes: likedBookLikes + 1};
+        return { ...state, likedBookLikes: likedBookLikes + 1};
       
     //     return {
     //       ...state.books.slice(0, index),
     //       ...state, likedBookLikes: likedBookLikes + 1,
     //       ...state.books.slice(index + 1)
     // };
-    
+    case 'SORT_BY_LIKES':
+        return {...state, books: action.payload.sort(function (a, b) {
+          return b.likes - a.likes;
+        })};
       default:
       
         return state;

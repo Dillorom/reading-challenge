@@ -8,7 +8,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Login from '../../components/User/Login/Login';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { fetchBooks, viewBook, likeCounter } from '../../actions/index';
+import { fetchBooks, viewBook, likeCounter, sortBooksByLikes } from '../../actions/index';
 import NewBook from '../NewBook/NewBook';
 
 class Books extends Component {
@@ -30,23 +30,27 @@ class Books extends Component {
 		// this.props.history.push('/books')
 	}
 
+	handleSortButton(event){
+		//debugger
+		this.props.sortBooksByLikes(this.props.books)
+	  }
+
 	render(){
 		//debugger
 		const renderBooks = () => this.props.books.map(book => {
 			//debugger
 			return(
-		
-			<div key={book.id}> 
-					<Book
-					title={book.title} 
-					author={book.author}
-					img_url={book.img_url}
-					description={book.description}
-					counter={book.likes}
-					likeCounter={this.handleLikeClick}
-					id={book.id} />
-			
-			</div>
+				<div key={book.id}> 
+						<Book
+						title={book.title} 
+						author={book.author}
+						img_url={book.img_url}
+						description={book.description}
+						counter={book.likes}
+						likeCounter={this.handleLikeClick}
+						id={book.id} />
+				
+				</div>
 			);
 		});
 	
@@ -72,6 +76,11 @@ class Books extends Component {
                         </Suspense>
                         )} />
 						<section className="Books">
+							<div>
+								<button onClick={(event) => this.handleSortButton(event)}>               
+									Sort by Likes
+								</button>
+							</div>
 							{renderBooks()}				
 						</section> 
                </Switch>
@@ -87,4 +96,4 @@ const mapStateToProps = state => {
 	}
   }
 
-export default withRouter(connect(mapStateToProps, { fetchBooks, viewBook, likeCounter })(Books));
+export default withRouter(connect(mapStateToProps, { fetchBooks, viewBook, likeCounter, sortBooksByLikes })(Books));

@@ -124,4 +124,13 @@ export const login = user => {
     user
 
   }
+ 
 };
+
+export const sortBooksByLikes = books => {
+  //debugger
+  return {
+    type: 'SORT_BY_LIKES',
+    payload: books
+  }
+}
