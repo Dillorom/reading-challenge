@@ -14,14 +14,20 @@ const manageBooks = (state = initialState, action) => {
         return { ...state, books: state.books.concat(action.payload)}
       case 'DELETE_BOOK':
         return {...state, books: state.books.filter(book => book.id !== action.payload.id)}
-      case "INCREMENT_LIKE_COUNTER":
-        //return {...state, books: state.books.filter(book => book.id == action.payload.id)}
+      case "INCREMENT_LIKE_COUNTER":    
    
         index = state.books.findIndex(book => book.id === action.payload.id); 
-        likedBook = state.books[index];
-        likedBookLikes = likedBook.likes
-        debugger
-        return { ...state, likedBookLikes: likedBookLikes + 1};
+        
+        return {...state, books: state.books[index] = action.payload}
+        //return {...state, books: state.books.filter(book => book.id == action.payload.id)}
+        //likedBook = state.books[index].likes+1;
+        // likedBookLikes = likedBook.likes
+        //debugger
+        // return { ...state, likedBookLikes: likedBookLikes + 1};
+        // let likedbook = action.payload.likes
+       // debugger
+       //debugger
+        //return { ...state, books: state.books};
       
     //     return {
     //       ...state.books.slice(0, index),
