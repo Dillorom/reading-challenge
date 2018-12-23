@@ -7,15 +7,6 @@ export const setGoal = goal => {
     };
   };
   
-  // export const likeCounter = (id) => {
-  //   //debugger
-  //   return {
-  //     type: 'INCREMENT_LIKE_COUNTER',
-  //     payload: id
-  //   }
-  //  }
-
-  
   export const likeCounter = (book, id) => {
     let likes = book.likes;
     let  newbook = {...book, likes: book.likes +1}
@@ -29,23 +20,17 @@ export const setGoal = goal => {
       },
       body: JSON.stringify(newbook)
     }
-    //debugger
     return dispatch => {
       fetch(`${API_URL}/books/${ id }`, data)
-        // .then(response => response.json())
         .then(response => response.json())
-        //.then(console.log())
-        // .then(returnedData => console.log(book))
-        .then(newbook => dispatch({
+          .then(newbook => dispatch({
           type: 'INCREMENT_LIKE_COUNTER',
           payload: newbook
         }))
-      //console.log("this is book: ", book))
-        .catch(err => err)
+          .catch(err => err)
      }
      
  }
-
  
   export const viewBook = (payload) => {
     return {
@@ -128,7 +113,6 @@ export const login = user => {
 };
 
 export const sortBooksByLikes = books => {
-  //debugger
   return {
     type: 'SORT_BY_LIKES',
     payload: books

@@ -13,10 +13,6 @@ import NewBook from '../NewBook/NewBook';
 
 class Books extends Component {
 
-	componentDidMount() {
-		// this.props.fetchBooks()
-	}
-
 	bookSelectedHandler = (id) => {
 		let filter = this.props.books.filter(book => book.id === id)
 		this.props.viewBook(filter);
@@ -25,23 +21,16 @@ class Books extends Component {
 
 	handleLikeClick = (bookId) => {
 		let filter = this.props.books.filter(book => book.id === bookId)
-		// let newFilter = {...filter[0], likes: filter[0].likes+1}
-		// this.props.likeCounter(newFilter, newFilter.id);
 		this.props.likeCounter(filter[0], filter[0].id)
-		//debugger
-		// this.props.history.push('/books')
 	}
 
 	handleSortButton(event){
-		//debugger
 		this.props.sortBooksByLikes(this.props.books)
 		this.setState({refresh: true})
 	  }
 
 	render(){
-		//debugger
 		const renderBooks = () => this.props.books.map(book => {
-			//debugger
 			return(
 				<div key={book.id}> 
 						<Book
@@ -92,7 +81,6 @@ class Books extends Component {
 	}
 };
 const mapStateToProps = state => {
-	//debugger
 	return {
 		
 	  books: state.manageBooks.books,
