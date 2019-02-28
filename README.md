@@ -1,3 +1,6 @@
+<img width="717" alt="2019-01-03 2" src="https://user-images.githubusercontent.com/37942024/53546501-6058dd80-3ae1-11e9-8ea5-c9ffac647ee6.png">
+
+
 # About
 Reading Challenge is an application that lets users set a goal for reading number of books in a year, and adds books to the user's shelf, and keeps track of user's progress.  
 
